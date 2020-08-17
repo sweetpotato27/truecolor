@@ -10,6 +10,14 @@ const validateLoginInput = require('../../validation/login');
 
 router.get("/test", (req, res) => res.json({ msg: "this is the users route"}));
 
+router.get(
+    "/current",
+    passport.authenticate("jwt", { session: false }),
+    (req, res) => {
+        res.send(req.user);
+    }
+)
+
 router.post("/register", (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
     

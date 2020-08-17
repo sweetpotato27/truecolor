@@ -28,7 +28,7 @@ module.exports = function validateLoginInput(data) {
     }
 
     //  Finally we return a javascript object with the keys: errors and isValid.  errors is connected to the errors javascript object
-    //  and isValid is a boolean value.
+    //  and isValid is a boolean value if there are no errors in errors.
     return {
         errors,
         isValid: Object.keys(errors).length === 0
