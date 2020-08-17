@@ -4,17 +4,25 @@ const bcrypt = require('bcryptjs');
 const keys = require("../../config/keys");
 const jwt = require("jsonwebtoken");
 const User = require('../../models/User');
+//validation imports
+const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 
 router.get("/test", (req, res) => res.json({ msg: "this is the users route"}));
 
 router.post("/register", (req, res) => {
-    console.log(req);
+    const { errors, isValid } = validateRegisterInput(req.body);
+    
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
     //Check to make sure nobody has already registered with a duplicate email
     User.findOne({ email: req.body.email })
     .then(user => {
         if (user) {
             //Throw a 400 error if the email address already exists
-            return res.status(400).json({email: "A user has already registered with this address"})
+            errors.email = 'Email already exists';
+            return res.status(400).json(errors);
         } else {
             // Otherwise create a new user
             const newUser = new User({
@@ -37,13 +45,21 @@ router.post("/register", (req, res) => {
 })
 
 router.post("/login", (req, res) => {
+    const { errors, isValid } = validateLoginInput(req.body);
+
+    if(!isValid) {
+        return res.status(400).json(errors);
+    }
+
     const email = req.body.email;
     const password = req.body.password;
 
     User.findOne({ email })
         .then(user => {
             if(!user) {
-                return res.status(404).json({ email: "This user does not exist" });
+                // use the validations to send the error
+                errors.email = 'User not found';
+                return res.status(404).json(errors);
             }
 
             bcrypt.compare(password, user.password)
@@ -66,7 +82,9 @@ router.post("/login", (req, res) => {
                             }
                         )
                     } else {
-                        return res.status(400).json({ password: "Incorrect password."});
+                        // use the validations to send the error
+                        errors.password = 'Incorrect password'
+                        return res.status(400).json(errors);
                     }
                 })
         })
