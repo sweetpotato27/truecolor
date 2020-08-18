@@ -8,7 +8,7 @@ class MainPage extends React.Component {
             <div>
                 <h1>True Color</h1>
                 <footer>
-                    Copyright &copy; 2020 FuckYourCopyright
+                    Copyright &copy; 2020 
                 </footer>
             </div>
         );
