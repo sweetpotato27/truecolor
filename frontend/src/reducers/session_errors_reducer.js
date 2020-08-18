@@ -1,51 +1,22 @@
-// src/reducers/session_errors_reducer.js
+// src/reducers/session_errors_reducer.js;
 
 import {
-    RECEIVE_SESSION_ERRORS, 
-    RECEIVE_CURRENT_USER,
-    RECEIVE_USER_SIGN_IN
-} from '../actions/session_actions';
+  RECEIVE_SESSION_ERRORS,
+  RECEIVE_CURRENT_USER,
+} from "../actions/session_actions";
 
 const _nullErrors = [];
 
-const initialState = {
-    isAuthenticated: false,
-    user: {}
-};
-
-export default function(state = initialState, action) {
-    switch (action.type) {
-        case RECEIVE_CURRENT_USER:
-            return {
-                ...state,
-                isAuthenticated: !!action.currentUser,
-                user: action.currentUser
-            };
-        case RECEIVE_USER_LOGOUT:
-            return {
-                isAuthenticated: false,
-                user: undefined
-            };
-        case RECEIVE_USER_SIGN_IN:
-            return {
-                ...state,
-                isSignedIn: true
-            }
-        default:
-            return state;
-    }
-}
-
 const SessionErrorsReducer = (state = _nullErrors, action) => {
-    Object.freeze(state);
-    switch(action.type) {
-        case RECEIVE_SESSION_ERRORS:
-            return action.errors;
-        case RECEIVE_CURRENT_USER:
-            return _nullErrors;
-        default:
-            return state;
-    }
+  Object.freeze(state);
+  switch (action.type) {
+    case RECEIVE_SESSION_ERRORS:
+      return action.errors;
+    case RECEIVE_CURRENT_USER:
+      return _nullErrors;
+    default:
+      return state;
+  }
 };
 
 export default SessionErrorsReducer;
