@@ -1,6 +1,6 @@
 // src/actions/post_actions.js
 
-import { getPost, getUserPosts, compostPost } from '../util/post_api_util';
+import { getPosts, getUserPosts, writePost } from '../util/post_api_util';
 
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
 export const RECEIVE_USER_POSTS = "RECEIVE_USER_POSTS";
@@ -21,7 +21,7 @@ export const receiveNewPost = post => ({
     post
 });
 
-export const fetchPost = () => dispatch => (
+export const fetchPosts = () => dispatch => (
     getPosts()
         .then(posts => dispatch(receivePosts(posts)))
         .catch(err => console.log(err))
@@ -30,5 +30,11 @@ export const fetchPost = () => dispatch => (
 export const fetchUserPosts = id => dispatch => (
     getUserPosts(id)
         .then(posts => dispatch(receiveUserPosts(posts)))
+        .catch(err => console.log(err))
+);
+
+export const composePost = data => dispatch => (
+    writePost(data)
+        .then(post => dispatch(receiveNewPost(post)))
         .catch(err => console.log(err))
 );
