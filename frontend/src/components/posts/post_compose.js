@@ -1,4 +1,4 @@
-// src/components/tweets/tweet_compose.js
+// src/components/posts/post_compose.js
 
 import React from 'react';
 import PostBox from './post_box';

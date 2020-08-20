@@ -1,4 +1,4 @@
-// src/components/tweets/tweet_compose_container.js
+// src/components/posts/post_compose_container.js
 
 import { connect } from 'react-redux';
 import { composePost } from '../../actions/post_actions';

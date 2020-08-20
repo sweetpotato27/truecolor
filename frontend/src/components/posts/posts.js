@@ -14,7 +14,7 @@ class Post extends React.Component {
     }
 
     componentWillMount() {
-        this.props.fetchTweets();
+        this.props.fetchPosts();
     }
 
     componentWillReceiveProps(newState) {

@@ -9,12 +9,13 @@ import rootReducer from '../reducers/root_reducer';
 // in the console window whenever we dispatch a new action to the store. The 
 // ability to configure our store with a preloaded state will come in handy when 
 // allowing us to authenticate users who are already logged in when they revisit our site.
-const configureStore = (preloadedState = {}) => (
-    createStore(
+const configureStore = (preloadedState = {}) => {
+    console.log("STORES OPEN:");
+    return createStore(
         rootReducer,
         preloadedState,
         applyMiddleware(thunk, logger)
     )
-);
+};
 
 export default configureStore;

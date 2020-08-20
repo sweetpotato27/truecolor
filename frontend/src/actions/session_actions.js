@@ -9,10 +9,14 @@ export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 
 // We'll dispatch this when our user signs in
-export const receiveCurrentUser = (currentUser) => ({
-  type: RECEIVE_CURRENT_USER,
-  currentUser,
-});
+export const receiveCurrentUser = (currentUser) => {
+  console.log("ACTION.CURRENT USER: ");
+  console.log(currentUser);
+  return {
+    type: RECEIVE_CURRENT_USER,
+    currentUser,
+  }
+};
 
 // This will be used to redirect the user to the login page upon signup
 export const receiveUserSignIn = () => ({
@@ -26,9 +30,12 @@ export const receiveErrors = (errors) => ({
 });
 
 // When our user is logged out, we will dispatch this action to set isAuthenticated to false
-export const logoutUser = () => ({
-  type: RECEIVE_USER_LOGOUT,
-});
+export const logoutUser = () => {
+  console.log("logging out.")
+  return {
+    type: RECEIVE_USER_LOGOUT,
+  }
+};
 
 // Upon signup, dispatch the approporiate action depending on which type of response we receieve from the backend
 export const signup = (user) => (dispatch) =>

@@ -26,7 +26,7 @@ module.exports = function validateLoginInput(data) {
     if (Validator.isEmpty(data.password)) {
         errors.password = 'Password field is required';
     }
-
+    console.log("VALIDATING LOGIN...");
     //  Finally we return a javascript object with the keys: errors and isValid.  errors is connected to the errors javascript object
     //  and isValid is a boolean value if there are no errors in errors.
     return {

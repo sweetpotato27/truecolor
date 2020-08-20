@@ -54,6 +54,7 @@ router.post("/register", (req, res) => {
 })
 
 router.post("/login", (req, res) => {
+    console.log("Hello route/api");
     const { errors, isValid } = validateLoginInput(req.body);
 
     if(!isValid) {
@@ -90,6 +91,7 @@ router.post("/login", (req, res) => {
                                 });
                             }
                         )
+                        console.log("JWT SIGNED")
                     } else {
                         // use the validations to send the error
                         errors.password = 'Incorrect password'

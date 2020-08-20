@@ -12,20 +12,21 @@ class LoginForm extends React.Component {
       password: "",
       errors: {},
     };
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    const that = this;
   }
 
-  // Once the user has been authenticated, redirect to the Tweets page
-  componentWillReceiveProps(nextProps) {
+  // Once the user has been authenticated, redirect to the Posts page
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
-      this.props.history.push("/tweets");
+      this.props.history.push("/posts");
     }
 
     // Set or clear errors
     this.setState({ errors: nextProps.errors });
   }
+
 
   // Handle field updates (called in the render method)
   update(field) {
@@ -44,7 +45,8 @@ class LoginForm extends React.Component {
       password: this.state.password,
     };
 
-    this.props.login(user);
+    // e.target.ownerDocument.defaultView.location.href = ("/profile");
+    // console.log(e.target.ownerDocument.defaultView);
   }
 
   // Render the session errors if there are any

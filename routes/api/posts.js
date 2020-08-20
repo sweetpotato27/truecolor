@@ -25,7 +25,7 @@ router.get('/user/:user_id', (req, res) => {
 
 router.get('/:id', (req, res) => {
     Post.findById(req.params.id)
-        .then(post => res.json(tweet))
+        .then(post => res.json(post))
         .catch(err =>
             res.status(404).json({ nopostfound: 'No post found with that ID'})
         );
@@ -45,9 +45,9 @@ router.post('/',
             user: req.user.id
         });
 
-        newPost.save().then(post => res.json(tweet));
+        newPost.save().then(post => res.json(post));
     }
 );
-//we will want to create an authenticated route to delete tweets, and perhaps some additional routes to add comments or likes.
+//we will want to create an authenticated route to delete posts, and perhaps some additional routes to add comments or likes.
 
 module.exports = router;
