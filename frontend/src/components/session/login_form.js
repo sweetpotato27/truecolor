@@ -14,11 +14,11 @@ class LoginForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
-    const that = this;
   }
 
   // Once the user has been authenticated, redirect to the Posts page
   UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log("Hello World")
     if (nextProps.currentUser === true) {
       this.props.history.push("/posts");
     }
@@ -44,9 +44,8 @@ class LoginForm extends React.Component {
       email: this.state.email,
       password: this.state.password,
     };
-
-    // e.target.ownerDocument.defaultView.location.href = ("/profile");
-    // console.log(e.target.ownerDocument.defaultView);
+    this.props.login(user);
+    
   }
 
   // Render the session errors if there are any
