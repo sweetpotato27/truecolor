@@ -11,5 +11,6 @@ export const getUserPosts = id => {
 };
 
 export const writePost = data => {
+    console.log("writing post util");
     return axios.post('/api/posts/', data)
 };

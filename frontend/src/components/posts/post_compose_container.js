@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => {
+    console.log("mapping dispatch");
     return {
         composePost: data => dispatch(composePost(data))
     };

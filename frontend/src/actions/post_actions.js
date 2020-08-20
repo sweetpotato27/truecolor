@@ -33,8 +33,11 @@ export const fetchUserPosts = id => dispatch => (
         .catch(err => console.log(err))
 );
 
-export const composePost = data => dispatch => (
-    writePost(data)
+export const composePost = data => dispatch => {
+    console.log("composePost action")
+    return (
+        writePost(data)
         .then(post => dispatch(receiveNewPost(post)))
         .catch(err => console.log(err))
-);
+    );
+}

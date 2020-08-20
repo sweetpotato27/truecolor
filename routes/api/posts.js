@@ -34,6 +34,7 @@ router.get('/:id', (req, res) => {
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
+        console.log("creating post");
         const { errors, isValid } = validatePostInput(req.body);
 
         if (!isValid) {

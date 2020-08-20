@@ -24,7 +24,7 @@ class PostCompose extends React.Component {
         let post = {
             text: this.state.text
         };
-
+        console.log("handleSubmit");
         this.props.composePost(post);
         this.setState({ text: '' })
     }
