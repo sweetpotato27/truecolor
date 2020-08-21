@@ -9,24 +9,34 @@ class PostCompose extends React.Component {
 
         this.state = {
             text: "",
-            newPost: ""
+            newPost: "",
+            img: {
+                title: "",
+                description: "",
+                image: {
+                    data: Buffer,
+                    contentType: String
+                }
+            }
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         this.setState({ newPost: nextProps.newPost.text });
     }
 
     handleSubmit(e) {
         e.preventDefault();
         let post = {
-            text: this.state.text
+            text: this.state.text,
+            img: this.state.img
         };
         console.log("handleSubmit");
         this.props.composePost(post);
-        this.setState({ text: '' })
+        this.setState({ text: '' });
+        this.setState({ img: { title: '', decription: '', image: '' } });
     }
 
     update() {
@@ -34,18 +44,63 @@ class PostCompose extends React.Component {
             text: e.currentTarget.value
         });
     }
+    updateTitle() {
+        return e => this.setState({
+            img: {
+                title: e.currentTarget.value
+            }
+        });
+    }
+    updateDescription() {
+        return e => this.setState({
+            img: {
+                description: e.currentTarget.value
+            }
+        });
+    }
+    updateImage() {
+        return e => this.setState({
+            img: {
+                image: e.currentTarget.value
+            }
+        });
+    }
+
 
     render() {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <div>
-                        <input type="textarea"
-                            value={this.state.text}
-                            onChange={this.update()}
-                            placeholder="Write your post..."
-                        />
-                        <input type="submit" value="Submit" />
+                        <div>
+                            <input type="text"
+                                id="title"
+                                value={this.state.img.title}
+                                onChange={this.updateTitle()}
+                                placeholder="Image Title..."
+                                required
+                            />
+                        </div>
+                        <div>
+                            <input type="textarea"
+                                id="desc"
+                                value={this.state.description}
+                                onChange={this.updateDescription()}
+                                placeholder="Image Description..."
+                                required
+                            />
+                        </div>
+                        <div>
+                            <input type="file" 
+                                id="image" 
+                                onChange={this.updateImage()}
+                                value="" 
+                                required
+                            />
+                        </div>
+                        <div>
+                            <input type="submit" value="Submit" />
+                        </div>
                     </div>
                 </form>
                 <br />

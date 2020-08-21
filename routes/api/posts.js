@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
+const fs = require('fs');
 
 require('../../config/passport')(passport);
 
@@ -34,6 +35,7 @@ router.get('/:id', (req, res) => {
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
+        console.log(req);
         console.log("creating post");
         const { errors, isValid } = validatePostInput(req.body);
 
@@ -46,7 +48,18 @@ router.post('/',
             user: req.user.id
         });
 
-        newPost.save().then(post => res.json(post));
+        newPost.img = {
+            data: fs.readFileSync(imgPath),
+            contentType: 'image/png'
+        }
+
+        newPost.img.contentType = 'image/png';
+
+        newPost.save()
+            .then(post => res.json(post))
+            .catch(err => console.log(err));
+
+            console.log('img saved to mongo')
     }
 );
 //we will want to create an authenticated route to delete posts, and perhaps some additional routes to add comments or likes.
