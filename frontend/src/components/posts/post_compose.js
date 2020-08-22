@@ -23,7 +23,7 @@ class PostCompose extends React.Component {
                         description: nextProps.description, 
                         imageFile: nextProps.imageFile, 
                         imageUrl: nextProps.imageUrl });
-        console.log(this.state.title);
+        console.log(this.state.t);
     }
 
     handleSubmit(e) {
@@ -48,6 +48,28 @@ class PostCompose extends React.Component {
             fileReader.readAsDataURL(file)
         }
     }
+    handleImageUpload(e) {
+        const file = e.currentTarget.files[0]
+        const formData = new FormData();
+        formData.append("file", file);
+        // replace this with your upload preset name
+        formData.append("upload_preset", "true-color");
+        const options = {
+          method: "POST",
+          body: formData,
+        };
+
+        // replace cloudname with your Cloudinary cloud_name
+        return fetch("https://api.cloudinary.com/v1_1/potato27", options)
+          .then((res) => res.json())
+          .then((res) => {
+              this.setState({
+                  imageUrl: res.secure_url,
+                  imageAlt: `An image of ${res.original_filename}`
+              })
+          })
+          .catch((err) => console.log(err));
+    }
 
     update(property) {
         return e => this.setState({ [property]: e.currentTarget.value });
@@ -56,6 +78,7 @@ class PostCompose extends React.Component {
 
     render() {
         const preview = this.state.imageUrl ? <img src={this.state.imageUrl} alt="preview" className="photo" /> : null;
+        
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -79,7 +102,7 @@ class PostCompose extends React.Component {
                         <div>
                             <input type="file" 
                                 id="image" 
-                                onChange={this.handleFile}
+                                onChange={this.handleImageUpload}
                             />
                         </div>
                         <div className="photo-preview">
