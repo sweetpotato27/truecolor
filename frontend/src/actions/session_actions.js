@@ -10,8 +10,6 @@ export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 
 // We'll dispatch this when our user signs in
 export const receiveCurrentUser = (currentUser) => {
-  console.log("ACTION.CURRENT USER: ");
-  console.log(currentUser);
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser,
@@ -31,7 +29,6 @@ export const receiveErrors = (errors) => ({
 
 // When our user is logged out, we will dispatch this action to set isAuthenticated to false
 export const logoutUser = () => {
-  console.log("logging out.")
   return {
     type: RECEIVE_USER_LOGOUT,
   }
@@ -48,7 +45,6 @@ export const signup = (user) => (dispatch) =>
 export const login = (user) => (dispatch) =>
   APIUtil.login(user)
     .then((res) => {
-      console.log("successful login")
       const { token } = res.data;
       localStorage.setItem("jwtToken", token);
       APIUtil.setAuthToken(token);

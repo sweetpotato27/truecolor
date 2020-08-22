@@ -6,8 +6,6 @@ import { Route, Redirect, withRouter } from "react-router-dom";
 
 // Passed in from parent component or from mapStateToProps
 const Auth = ({ component: Component, path, loggedIn, exact }) => {
-  console.log("AUTH")
-  console.log(loggedIn);
   return (
   <Route
     path={path}
@@ -24,8 +22,6 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => {
 };
 
 const Protected = ({ component: Component, loggedIn, ...rest }) => {
-  console.log("PROTECTED");
-  console.log(loggedIn)
   return (
   <Route
     {...rest}

@@ -7,13 +7,11 @@ import PostCompose from './post_compose';
 const mapStateToProps = (state) => {
     return {
         currentUser: state.session.user,
-        newPost: state.posts.new,
-        img: state.posts.img
+        formType: 'postForm'
     };
 };
 
 const mapDispatchToProps = dispatch => {
-    console.log("mapping dispatch");
     return {
         composePost: data => dispatch(composePost(data))
     };

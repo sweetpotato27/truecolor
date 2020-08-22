@@ -91,7 +91,6 @@ router.post("/login", (req, res) => {
                                 });
                             }
                         )
-                        console.log("JWT SIGNED")
                     } else {
                         // use the validations to send the error
                         errors.password = 'Incorrect password'

@@ -13,11 +13,11 @@ class Post extends React.Component {
         }
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.props.fetchPosts();
     }
 
-    componentWillReceiveProps(newState) {
+    UNSAFE_componentWillReceiveProps(newState) {
         this.setState({ posts: newState.posts });
     }
 

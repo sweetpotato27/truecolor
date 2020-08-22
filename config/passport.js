@@ -15,11 +15,9 @@ module.exports = passport => {
             .then(user => {
                 if (user) {
                     // return the user to the frontend
-                    console.log("returning the user to the frontend");
                     return done(null, user);
                 }
                 // return false since there is no user
-                console.log("returning false since there is no user");
                 return done(null, false);
             })
             .catch(err => console.log(err));

@@ -34,7 +34,7 @@ export const fetchUserPosts = id => dispatch => (
 );
 
 export const composePost = data => dispatch => {
-    console.log("composePost action")
+    console.log(data)
     return (
         writePost(data)
         .then(post => dispatch(receiveNewPost(post)))

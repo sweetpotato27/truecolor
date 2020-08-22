@@ -13,7 +13,6 @@ class Profile extends React.Component {
     }
 
     componentWillMount() {
-        console.log(this.props.currentUser.id);
         this.props.fetchUserPosts(this.props.currentUser.id);
     }
 

@@ -8,66 +8,54 @@ class PostCompose extends React.Component {
         super(props);
 
         this.state = {
-            text: "",
-            newPost: "",
-            img: {
-                title: "",
-                description: "",
-                image: {
-                    data: Buffer,
-                    contentType: String
-                }
-            }
-        }
+            title: "",
+            description: "",
+            imageFile: null,
+            imageUrl: null
+        };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFile = this.handleFile.bind(this);
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-        this.setState({ newPost: nextProps.newPost.text });
+        this.setState({ title: nextProps.title, 
+                        description: nextProps.description, 
+                        imageFile: nextProps.imageFile, 
+                        imageUrl: nextProps.imageUrl });
+        console.log(this.state.title);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        let post = {
-            text: this.state.text,
-            img: this.state.img
-        };
-        console.log("handleSubmit");
-        this.props.composePost(post);
-        this.setState({ text: '' });
-        this.setState({ img: { title: '', decription: '', image: '' } });
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('title', this.state.title);
+        formData.append('description', this.state.description);
+        formData.append('image', this.state.imageFile);
+        formData.append('upload_preset', 'true-color');
+        formData.append('cloud_name', 'potato27');
+        this.props.composePost(formData);
     }
 
-    update() {
-        return e => this.setState({
-            text: e.currentTarget.value
-        });
+    handleFile(e) {
+        const file = e.currentTarget.files[0];
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            this.setState({ imageFile: file, imageUrl: fileReader.result });
+        };
+        if (file) {
+            fileReader.readAsDataURL(file)
+        }
     }
-    updateTitle() {
-        return e => this.setState({
-            img: {
-                title: e.currentTarget.value
-            }
-        });
-    }
-    updateDescription() {
-        return e => this.setState({
-            img: {
-                description: e.currentTarget.value
-            }
-        });
-    }
-    updateImage() {
-        return e => this.setState({
-            img: {
-                image: e.currentTarget.value
-            }
-        });
+
+    update(property) {
+        return e => this.setState({ [property]: e.currentTarget.value });
     }
 
 
     render() {
+        const preview = this.state.imageUrl ? <img src={this.state.imageUrl} alt="preview" className="photo" /> : null;
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -75,28 +63,27 @@ class PostCompose extends React.Component {
                         <div>
                             <input type="text"
                                 id="title"
-                                value={this.state.img.title}
-                                onChange={this.updateTitle()}
+                                value={this.state.title}
+                                onChange={this.update('title')}
                                 placeholder="Image Title..."
-                                required
                             />
                         </div>
                         <div>
                             <input type="textarea"
                                 id="desc"
                                 value={this.state.description}
-                                onChange={this.updateDescription()}
+                                onChange={this.update('description')}
                                 placeholder="Image Description..."
-                                required
                             />
                         </div>
                         <div>
                             <input type="file" 
                                 id="image" 
-                                onChange={this.updateImage()}
-                                value="" 
-                                required
+                                onChange={this.handleFile}
                             />
+                        </div>
+                        <div className="photo-preview">
+                            {preview}
                         </div>
                         <div>
                             <input type="submit" value="Submit" />

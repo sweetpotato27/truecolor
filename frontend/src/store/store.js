@@ -10,7 +10,6 @@ import rootReducer from '../reducers/root_reducer';
 // ability to configure our store with a preloaded state will come in handy when 
 // allowing us to authenticate users who are already logged in when they revisit our site.
 const configureStore = (preloadedState = {}) => {
-    console.log("STORES OPEN:");
     return createStore(
         rootReducer,
         preloadedState,

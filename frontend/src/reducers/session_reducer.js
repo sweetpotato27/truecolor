@@ -15,8 +15,6 @@ export default function (state = initialState, action) {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            console.log("RECEIEVE_CURRENT_USER");
-            console.log(action.currentUser);
             return {
                 ...state,
                 isAuthenticated: !!action.currentUser,
