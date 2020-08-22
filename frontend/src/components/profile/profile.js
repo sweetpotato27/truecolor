@@ -12,11 +12,11 @@ class Profile extends React.Component {
         }
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.props.fetchUserPosts(this.props.currentUser.id);
     }
 
-    componentWillReceiveProps(newState) {
+    UNSAFE_componentWillReceiveProps(newState) {
         this.setState({ posts: newState.posts });
     }
 
@@ -28,7 +28,7 @@ class Profile extends React.Component {
                 <div>
                     <h2>All of this User's Posts</h2>
                     {this.state.posts.map(post => (
-                        <PostBox key={post._id} text={post.text} />
+                        <PostBox key={post._id} description={post.description} />
                     ))}
                 </div>
             );

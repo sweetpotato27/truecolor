@@ -6,7 +6,7 @@ class PostBox extends React.Component {
     render() {
         return (
             <div>
-                <h3>{this.props.text}</h3>
+                <h3>{this.props.description}</h3>
             </div>
         );
     }

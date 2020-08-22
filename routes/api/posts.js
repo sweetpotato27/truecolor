@@ -38,29 +38,21 @@ router.post('/',
         console.log("post route POST")
         console.log(req.body);
         const { errors, isValid } = validatePostInput(req.body);
-
+        console.log(isValid);
         if (!isValid) {
             console.log("error");
             return res.status(400).json(errors);
         }
-
         const newPost = new Post({
-            text: req.body.text,
+            description: req.body.description,
             user: req.user.id
         });
 
-        newPost.img = {
-            data: fs.readFileSync(imgPath),
-            contentType: 'image/png'
-        }
-
-        newPost.img.contentType = 'image/png';
-
+        console.log(newPost);
         newPost.save()
             .then(post => res.json(post))
             .catch(err => console.log(err));
 
-            console.log('img saved to mongo')
     }
 );
 //we will want to create an authenticated route to delete posts, and perhaps some additional routes to add comments or likes.

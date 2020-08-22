@@ -7,7 +7,7 @@ import PostCompose from './post_compose';
 const mapStateToProps = (state) => {
     return {
         currentUser: state.session.user,
-        formType: 'postForm'
+        newPost: state.posts.new
     };
 };
 
