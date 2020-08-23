@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PostBox from './post_box';
+import firebase from '../firebase';
 
 class PostCompose extends React.Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class PostCompose extends React.Component {
             newPost: ''
         };
 
+        this.fileInput = React.createRef();
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -21,6 +23,15 @@ class PostCompose extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        //Get file
+        let file = this.fileInput.current.files[0];
+        // Create a storage ref
+        let storageRef = firebase.storage().ref('images/' + file.name);
+        // Upload file
+        let task = storageRef.put(file);
+        alert(
+            `Selected file - ${this.fileInput.current.files[0].name}`
+        );
         let post =  {
             description: this.state.description
         };
@@ -46,6 +57,9 @@ class PostCompose extends React.Component {
                                 onChange={this.update('description')}
                                 placeholder="Image Description..."
                             />
+                        </div>
+                        <div>
+                            <input type="file" ref={this.fileInput} />
                         </div>
                         <div>
                             <input type="submit" value="Submit" />
