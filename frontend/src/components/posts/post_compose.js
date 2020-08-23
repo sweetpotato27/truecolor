@@ -25,19 +25,61 @@ class PostCompose extends React.Component {
         e.preventDefault();
         //Get file
         let file = this.fileInput.current.files[0];
+
         // Create a storage ref
         let storageRef = firebase.storage().ref('images/' + file.name);
-        // Upload file
-        let task = storageRef.put(file);
+
+        // Upload file and save
+        storageRef.put(file);
+
+        // The following adds html img element to html document
+        // it pulls the image from firebase
+        storageRef.getDownloadURL().then(function(url) {
+
+            let img = document.createElement('img');
+            img.src = url;
+            // Insert url into an <img> tag to "download"
+            document.getElementById("image-div").appendChild(img);
+
+            // we can save url to our database here!
+            // we should probably save the title and description and other attributes 
+            // of a new post here as well.
+            // That way they are only saved to db if an image is successfully uploaded to firebase.
+
+        }).catch(function(error) {
+
+            // A full list of error codes is available at
+            // https://firebase.google.com/docs/storgage/web/handle-errors
+            switch (error.code) {
+                case 'storage/object-not-found':
+                    // File doesn't exist
+                    break;
+                case 'storage/unauthorized':
+                    // User doesn't have permission to access the object
+                    break;
+                case 'storage/canceled':
+                    // User canceled the upload
+                    break;
+                case 'storage/unknown':
+                    // Unknown error occurred, inspect te server reponse
+                    break;
+                default:
+                    break;
+            }
+        });
+
         alert(
             `Selected file - ${this.fileInput.current.files[0].name}`
         );
+
+        // might move this ...
         let post =  {
             description: this.state.description
         };
 
         this.props.composePost(post);
         this.setState({ description: '' })
+        // ...
     }
 
     update(property) {
@@ -66,6 +108,9 @@ class PostCompose extends React.Component {
                         </div>
                     </div>
                 </form>
+                <div id="image-div">
+
+                </div>
                 <br />
                 <PostBox text={this.state.newPost} />
             </div>
