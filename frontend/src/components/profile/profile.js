@@ -28,7 +28,7 @@ class Profile extends React.Component {
                 <div>
                     <h2>All of this User's Posts</h2>
                     {this.state.posts.map(post => (
-                        <PostBox key={post._id} description={post.description} />
+                        <PostBox key={post._id} title={post.title} description={post.description} imageUrl={post.imageUrl}/>
                     ))}
                 </div>
             );

@@ -35,16 +35,15 @@ router.get('/:id', (req, res) => {
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-        console.log("post route POST")
-        console.log(req.body);
         const { errors, isValid } = validatePostInput(req.body);
-        console.log(isValid);
         if (!isValid) {
             console.log("error");
             return res.status(400).json(errors);
         }
         const newPost = new Post({
+            title: req.body.title,
             description: req.body.description,
+            imageUrl: req.body.imageUrl,
             user: req.user.id
         });
 
