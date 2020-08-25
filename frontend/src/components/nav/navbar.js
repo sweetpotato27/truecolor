@@ -19,18 +19,18 @@ class NavBar extends React.Component {
     getLinks() {
         if(this.props.loggedIn) {
             return (
-                <div>
-                    <Link to={'/posts'}>All Posts</Link>
-                    <Link to={'/profile'}>Profile</Link>
-                    <Link to={'/new_post'}>Post Something!</Link>
+                <div className="hyperlink-div">
+                    <Link className="hyperlink" to={'/posts'}>All Posts</Link>
+                    <Link className="hyperlink" to={'/new_post'}>Post Something!</Link>
+                    <Link className="hyperlink" to={'/profile'}>Profile</Link>
                     <button onClick={this.logoutUser}>Logout</button>
                 </div>
             );
         } else {
             return (
-                <div>
-                    <Link to={'/signup'}>Signup</Link>
-                    <Link to={'/login'}>Login</Link>
+                <div className="hyperlink-div">
+                    <Link className="hyperlink" to={'/signup'}>Signup</Link>
+                    <Link className="hyperlink" to={'/login'}>Login</Link>
                 </div>
             );
         }

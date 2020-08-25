@@ -1,0 +1,17 @@
+/* This file is linked to index.html */
+
+@import "./css/reset.css";
+@import "./css/class_names.css";
+
+body {
+    color: honeydew;
+    background-color: #282c34;
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
