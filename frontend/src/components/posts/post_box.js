@@ -9,7 +9,7 @@ class PostBox extends React.Component {
                 <h2>{this.props.title}</h2>
                 <h3>{this.props.description}</h3>
                 <h3>{this.props.user}</h3>
-                <img src={this.props.imageUrl} alt=""></img>
+                <img className="image" src={this.props.imageUrl} alt=""></img>
             </div>
         );
     }
