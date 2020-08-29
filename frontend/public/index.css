@@ -6,12 +6,15 @@
 body {
     color: honeydew;
     background-color: #282c34;
-    display: flex;
     min-height: 100vh;
     width: 100%;
     padding: 0;
     margin: 0;
-    align-items: center;
+}
+
+#root {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
     justify-content: center;
-    flex-direction: column;
 }

@@ -5,7 +5,7 @@ import React from 'react';
 class PostBox extends React.Component {
     render() {
         return (
-            <div>
+            <div className="post-box-div">
                 <h2>{this.props.title}</h2>
                 <h3>{this.props.description}</h3>
                 <h3>{this.props.user}</h3>

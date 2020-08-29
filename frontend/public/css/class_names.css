@@ -1,13 +1,32 @@
 /* This file is linked to index.css */
+.navbar {
+
+}
+
 .hyperlink-div {
     
 }
+
 .hyperlink {
     color: honeydew;
-    font-size: 30px;
+    font-size: 16px;
     text-decoration-line: none;
 }
 
 .image {
     max-width: 400px;
+}
+
+.all-posts > h2 {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    font-size: 27px;
+}
+
+.post-box-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

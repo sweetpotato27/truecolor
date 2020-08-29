@@ -26,11 +26,18 @@ class Post extends React.Component {
             return (<div>There are no Posts</div>)
         } else {
             return (
-                <div>
+                <div className="all-posts">
                     <h2>All Posts</h2>
-                    {this.state.posts.map(post => (
-                        <PostBox key={post._id} user={post.user} title={post.title} description={post.description} imageUrl={post.imageUrl} />
-                    ))}
+                    <div className="all-posts-div">
+                        {this.state.posts.map(post => (
+                            <PostBox key={post._id} 
+                                    className="post-box"
+                                    user={post.user} 
+                                    title={post.title} 
+                                    description={post.description} 
+                                    imageUrl={post.imageUrl} />
+                        ))}
+                    </div>
                 </div>
             );
         }
