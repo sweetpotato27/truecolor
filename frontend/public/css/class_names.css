@@ -1,13 +1,33 @@
 /* This file is linked to index.css */
-.navbar {
+.app {
+    width: 100vw;
+}
 
+.session-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    background-color: teal
+}
+
+.navbar > h1 {
+    margin: 10px 50px 10px 50px;
 }
 
 .hyperlink-div {
-    
+    margin: 10px 50px 10px 50px;
+
 }
 
 .hyperlink {
+    margin: 0px 10px 0px 10px;
     color: honeydew;
     font-size: 16px;
     text-decoration-line: none;

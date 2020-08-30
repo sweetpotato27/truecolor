@@ -17,7 +17,7 @@ import PostComposeContainer from './posts/post_compose_container';
 // required for the unique needs of our app.
 
 const App = () => (
-    <div>
+    <div className="app">
         <NavBarContainer />
         <Switch>
             <AuthRoute exact path="/" component={MainPage} />

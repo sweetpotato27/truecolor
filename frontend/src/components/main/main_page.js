@@ -5,11 +5,8 @@ import React from 'react';
 class MainPage extends React.Component {
     render() {
         return (
-            <div>
+            <div className="main">
                 <h1>True Color</h1>
-                <footer>
-                    Copyright &copy; 2020 
-                </footer>
             </div>
         );
     }
