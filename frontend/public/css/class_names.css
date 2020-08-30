@@ -8,6 +8,12 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    
+}
+
+.session-form-div {
+    display: block;
+    text-align: center;
 }
 
 .navbar {

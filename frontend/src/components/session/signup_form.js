@@ -58,6 +58,7 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="session-form">
+        <div className="session-form-div">
         <form onSubmit={this.handleSubmit}>
           <div className="login-form">
             <br />
@@ -93,6 +94,7 @@ class SignupForm extends React.Component {
             {this.renderErrors()}
           </div>
         </form>
+        </div>
       </div>
     );
   }
