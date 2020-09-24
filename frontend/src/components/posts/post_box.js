@@ -9,6 +9,7 @@ class PostBox extends React.Component {
                 <h2>{this.props.title}</h2>
                 <h3>{this.props.description}</h3>
                 <h3>{this.props.user}</h3>
+                <h3>{this.props.date ? this.props.date.split("T")[0] : ""}</h3>
                 <img className="image" src={this.props.imageUrl} alt=""></img>
             </div>
         );

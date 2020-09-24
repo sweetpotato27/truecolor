@@ -32,6 +32,7 @@ class Post extends React.Component {
                         {this.state.posts.map(post => (
                             <PostBox key={post._id} 
                                     className="post-box"
+                                    date={post.date}
                                     user={post.user} 
                                     title={post.title} 
                                     description={post.description} 
