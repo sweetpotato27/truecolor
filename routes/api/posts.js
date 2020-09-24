@@ -44,7 +44,8 @@ router.post('/',
             title: req.body.title,
             description: req.body.description,
             imageUrl: req.body.imageUrl,
-            user: req.user.id
+            userId: req.user.id,
+            user: req.user.handle
         });
 
         console.log(newPost);
