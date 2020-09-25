@@ -13,15 +13,15 @@ const PostSchema = new Schema({
     },
     title: {
         type: String,
-        required: true
+        required: false
     },
-    description: {
+    body: {
         type: String,
         required: true
     },
     imageUrl: {
         type: String,
-        required: true
+        required: false
     },
     date: {
         type: Date,

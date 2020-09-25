@@ -17,6 +17,7 @@ class Post extends React.Component {
         this.props.fetchPosts();
     }
 
+
     UNSAFE_componentWillReceiveProps(newState) {
         this.setState({ posts: newState.posts });
     }
@@ -35,7 +36,7 @@ class Post extends React.Component {
                                     date={post.date}
                                     user={post.user} 
                                     title={post.title} 
-                                    description={post.description} 
+                                    body={post.description} 
                                     imageUrl={post.imageUrl} />
                         ))}
                     </div>

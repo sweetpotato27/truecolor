@@ -7,22 +7,13 @@ module.exports = function validatePostInput(data) {
     let errors = {}
     
     data.title = validText(data.title) ? data.title : '';
-    data.description = validText(data.description) ? data.description : '';
+    data.body = validText(data.body) ? data.body : '';
     data.imageUrl = validText(data.imageUrl) ? data.imageUrl : '';
 
-    if (!Validator.isLength(data.title, { min: 5, max: 140 })) {
-        errors.text = 'Post must be between 5 and 140 characters';
+    if (Validator.isEmpty(data.body)) {
+        errors.text = 'Body is required';
     }
-
-    if (Validator.isEmpty(data.title)) {
-        errors.text = 'Title is required';
-    }
-    if (Validator.isEmpty(data.description)) {
-        errors.text = 'Description is required';
-    }
-    if (Validator.isEmpty(data.imageUrl)) {
-        errors.text = 'Image is required';
-    }
+    
 
     return {
         errors,

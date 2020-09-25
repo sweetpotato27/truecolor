@@ -31,7 +31,7 @@ class Profile extends React.Component {
                         <PostBox key={post._id} 
                                 date={post.date}
                                 title={post.title} 
-                                description={post.description} 
+                                body={post.body} 
                                 imageUrl={post.imageUrl}/>
                     ))}
                 </div>
