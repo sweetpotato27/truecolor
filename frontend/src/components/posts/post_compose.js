@@ -1,8 +1,9 @@
 // src/components/posts/post_compose.js
 
 import React from 'react';
+import { withRouter } from 'react-router-dom'; 
 import PostBox from './post_box';
-import firebase from '../firebase';
+import fb from '../firebase';
 
 class PostCompose extends React.Component {
     constructor(props) {
@@ -10,17 +11,16 @@ class PostCompose extends React.Component {
 
         this.state = {
             title: '',
-            description: '',
+            body: '',
             imageUrl: '',
             newPost: ''
         };
-
         this.fileInput = React.createRef();
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-        this.setState({ description: nextProps.newPost.description });
+        this.setState({ body: nextProps.newPost.body });
     }
 
     handleSubmit(e) {
@@ -28,9 +28,12 @@ class PostCompose extends React.Component {
         e.preventDefault();
         //Get file
         let file = this.fileInput.current.files[0];
+        
+        //Get Element
+        let uploader = document.getElementById('uploader');
 
         // Create a storage ref
-        let storageRef = firebase.storage().ref('images/' + file.name);
+        let storageRef = fb.storage().ref('images/' + file.name);
 
         // Upload file and save
         let task = storageRef.put(file);
@@ -39,6 +42,8 @@ class PostCompose extends React.Component {
         // it pulls the image from firebase
         task.on('state_changed',
           function progress(snapshot) {
+            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            uploader.value = percentage;
           },
 
           function error(err) {
@@ -52,15 +57,15 @@ class PostCompose extends React.Component {
                   // That way they are only saved to db if an image is successfully uploaded to firebase.
                   let post = {
                       title: that.state.title,
-                      description: that.state.description,
+                      body: that.state.body,
                       imageUrl: url
                   }
     
-                  that.props.composePost(post);
-                  that.setState({ title: '',
-                                  description: '',
-                                  imageUrl: '' });
-    
+                that.props.composePost(post).then(() => that.props.history.push("/posts"));
+                //   that.setState({ title: '',
+                //                   body: '',
+                //                   imageUrl: '' });
+                
               }).catch(function(error) {
     
                   // A full list of error codes is available at
@@ -68,6 +73,7 @@ class PostCompose extends React.Component {
                   switch (error.code) {
                       case 'storage/object-not-found':
                           // File doesn't exist
+                          console.log("broke it")
                           break;
                       case 'storage/unauthorized':
                           // User doesn't have permission to access the object
@@ -82,19 +88,29 @@ class PostCompose extends React.Component {
                           break;
                   }
               })
-              
           }
-        );
+        )
     }
 
     update(property) {
-        return e => this.setState({ [property]: e.currentTarget.value });
+      return e => this.setState({ [property]: e.currentTarget.value });
     }
 
 
     render() {
+      let imageOrProgress;
+      !this.state.imageUrl ? 
+        imageOrProgress = <div className="progress-div">
+                            <br />
+                            <progress value="0" max="100" id="uploader"></progress>
+                          </div>
+        : imageOrProgress = <div className="post-box-div">
+                              <br />
+                              <PostBox imageUrl={this.state.imageUrl} />
+                            </div>
+
         return (
-          <div>
+          <div className="post-compose-form">
             <form onSubmit={this.handleSubmit}>
               <div>
                 <div>
@@ -103,16 +119,16 @@ class PostCompose extends React.Component {
                     id="title"
                     value={this.state.title}
                     onChange={this.update("title")}
-                    placeholder="Image Title..."
+                    placeholder="Title..."
                   />
                 </div>
                 <div>
                   <input
                     type="textarea"
-                    id="desc"
-                    value={this.state.description}
-                    onChange={this.update("description")}
-                    placeholder="Image Description..."
+                    id="body"
+                    value={this.state.body}
+                    onChange={this.update("body")}
+                    placeholder="Body..."
                   />
                 </div>
                 <div>
@@ -123,12 +139,10 @@ class PostCompose extends React.Component {
                 </div>
               </div>
             </form>
-            <div id="image-div"></div>
-            <br />
-            <PostBox text={this.state.newPost} />
+            {imageOrProgress}
           </div>
         );
       }
 }
 
-export default PostCompose;
+export default withRouter(PostCompose);
