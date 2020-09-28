@@ -17,7 +17,6 @@ class Post extends React.Component {
         this.props.fetchPosts();
     }
 
-
     UNSAFE_componentWillReceiveProps(newState) {
         this.setState({ posts: newState.posts });
     }
@@ -28,15 +27,17 @@ class Post extends React.Component {
         } else {
             return (
                 <div className="all-posts">
-                    <h2>All Posts</h2>
                     <div className="all-posts-div">
                         {this.state.posts.map(post => (
                             <PostBox key={post._id} 
                                     className="post-box"
-                                    date={post.date}
                                     user={post.user} 
                                     title={post.title} 
+<<<<<<< HEAD
+                                    description={post.description} 
+=======
                                     body={post.body} 
+>>>>>>> master
                                     imageUrl={post.imageUrl} />
                         ))}
                     </div>

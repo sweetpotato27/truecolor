@@ -20,8 +20,12 @@ class NavBar extends React.Component {
         if(this.props.loggedIn) {
             return (
                 <div className="hyperlink-div">
-                    <Link className="hyperlink" to={'/posts'}>All Posts</Link>
-                    <Link className="hyperlink" to={'/new_post'}>Post Something!</Link>
+                    <Link className="hyperlink" to={'/posts'}>Feed</Link>
+                    <Link className="hyperlink" to={'/info'}>Info</Link>
+                    <Link className="hyperlink" to={'/contributors'}>Contributors</Link>
+                    <Link className="hyperlink" to={'/calendar'}>Calendar</Link>
+                    <Link className="hyperlink" to={'https://instagram.com/truecolormag'}>Instagram</Link>
+                    <Link className="hyperlink" to={'/new_post'}>Upload</Link>
                     <Link className="hyperlink" to={'/profile'}>Profile</Link>
                     <button onClick={this.logoutUser}>Logout</button>
                 </div>
@@ -39,7 +43,7 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className="navbar">
-                <h1>True Color</h1>
+                <h1><Link className="hyperlink" to={'/posts'}>True Color</Link></h1>
                 { this.getLinks() }
             </div>
         );

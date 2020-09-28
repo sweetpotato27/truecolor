@@ -1,9 +1,8 @@
 // src/components/posts/post_compose.js
 
 import React from 'react';
-import { withRouter } from 'react-router-dom'; 
 import PostBox from './post_box';
-import fb from '../firebase';
+import firebase from '../firebase';
 
 class PostCompose extends React.Component {
     constructor(props) {
@@ -11,16 +10,17 @@ class PostCompose extends React.Component {
 
         this.state = {
             title: '',
-            body: '',
+            description: '',
             imageUrl: '',
             newPost: ''
         };
+
         this.fileInput = React.createRef();
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-        this.setState({ body: nextProps.newPost.body });
+        this.setState({ description: nextProps.newPost.description });
     }
 
     handleSubmit(e) {
@@ -35,7 +35,7 @@ class PostCompose extends React.Component {
         let success = document.getElementById("successful-post-compose");
 
         // Create a storage ref
-        let storageRef = fb.storage().ref('images/' + file.name);
+        let storageRef = firebase.storage().ref('images/' + file.name);
 
         // Upload file and save
         let task = storageRef.put(file);
@@ -44,8 +44,6 @@ class PostCompose extends React.Component {
         // it pulls the image from firebase
         task.on('state_changed',
           function progress(snapshot) {
-            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            uploader.value = percentage;
           },
 
           function error(err) {
@@ -59,7 +57,7 @@ class PostCompose extends React.Component {
                   // That way they are only saved to db if an image is successfully uploaded to firebase.
                   let post = {
                       title: that.state.title,
-                      body: that.state.body,
+                      description: that.state.description,
                       imageUrl: url
                   }
     
@@ -78,7 +76,6 @@ class PostCompose extends React.Component {
                   switch (error.code) {
                       case 'storage/object-not-found':
                           // File doesn't exist
-                          console.log("broke it")
                           break;
                       case 'storage/unauthorized':
                           // User doesn't have permission to access the object
@@ -93,29 +90,19 @@ class PostCompose extends React.Component {
                           break;
                   }
               })
+              
           }
-        )
+        );
     }
 
     update(property) {
-      return e => this.setState({ [property]: e.currentTarget.value });
+        return e => this.setState({ [property]: e.currentTarget.value });
     }
 
 
     render() {
-      let imageOrProgress;
-      !this.state.imageUrl ? 
-        imageOrProgress = <div className="progress-div">
-                            <br />
-                            <progress value="0" max="100" id="uploader"></progress>
-                          </div>
-        : imageOrProgress = <div className="post-box-div">
-                              <br />
-                              <PostBox imageUrl={this.state.imageUrl} />
-                            </div>
-
         return (
-          <div className="post-compose-form">
+          <div>
             <form onSubmit={this.handleSubmit}>
               <div>
                 <div>
@@ -124,16 +111,16 @@ class PostCompose extends React.Component {
                     id="title"
                     value={this.state.title}
                     onChange={this.update("title")}
-                    placeholder="Title..."
+                    placeholder="Image Title..."
                   />
                 </div>
                 <div>
                   <input
                     type="textarea"
-                    id="body"
-                    value={this.state.body}
-                    onChange={this.update("body")}
-                    placeholder="Body..."
+                    id="desc"
+                    value={this.state.description}
+                    onChange={this.update("description")}
+                    placeholder="Image Description..."
                   />
                 </div>
                 <div>
@@ -153,4 +140,4 @@ class PostCompose extends React.Component {
       }
 }
 
-export default withRouter(PostCompose);
+export default PostCompose;
