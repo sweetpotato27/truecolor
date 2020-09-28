@@ -31,6 +31,8 @@ class PostCompose extends React.Component {
         
         //Get Element
         let uploader = document.getElementById('uploader');
+        uploader.style.display = "block";
+        let success = document.getElementById("successful-post-compose");
 
         // Create a storage ref
         let storageRef = fb.storage().ref('images/' + file.name);
@@ -61,10 +63,13 @@ class PostCompose extends React.Component {
                       imageUrl: url
                   }
     
-                that.props.composePost(post).then(() => that.props.history.push("/posts"));
-                //   that.setState({ title: '',
-                //                   body: '',
-                //                   imageUrl: '' });
+                that.props.composePost(post)
+                          .then(() => setTimeout(() => success.style.display = "block", 1))
+                          .then(() => uploader.style.display = "none")
+                          .then(() => setTimeout(() => that.props.history.push("/posts"), 2500));
+                  that.setState({ title: '',
+                                  body: '',
+                                  imageUrl: '' });
                 
               }).catch(function(error) {
     
@@ -140,6 +145,9 @@ class PostCompose extends React.Component {
               </div>
             </form>
             {imageOrProgress}
+            <div>
+              <h2 id="successful-post-compose" >Successful Compose!</h2>
+            </div>
           </div>
         );
       }

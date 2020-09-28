@@ -36,7 +36,7 @@ class Post extends React.Component {
                                     date={post.date}
                                     user={post.user} 
                                     title={post.title} 
-                                    body={post.description} 
+                                    body={post.body} 
                                     imageUrl={post.imageUrl} />
                         ))}
                     </div>
