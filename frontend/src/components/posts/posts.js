@@ -33,11 +33,7 @@ class Post extends React.Component {
                                     className="post-box"
                                     user={post.user} 
                                     title={post.title} 
-<<<<<<< HEAD
-                                    description={post.description} 
-=======
                                     body={post.body} 
->>>>>>> master
                                     imageUrl={post.imageUrl} />
                         ))}
                     </div>

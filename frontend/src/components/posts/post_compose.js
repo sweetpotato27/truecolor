@@ -101,6 +101,20 @@ class PostCompose extends React.Component {
 
 
     render() {
+       let imageOrProgress;
+       !this.state.imageUrl
+         ? (imageOrProgress = (
+             <div className="progress-div">
+               <br />
+               <progress value="0" max="100" id="uploader"></progress>
+             </div>
+           ))
+         : (imageOrProgress = (
+             <div className="post-box-div">
+               <br />
+               <PostBox imageUrl={this.state.imageUrl} />
+             </div>
+           ));
         return (
           <div>
             <form onSubmit={this.handleSubmit}>
