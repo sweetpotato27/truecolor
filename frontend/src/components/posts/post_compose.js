@@ -20,7 +20,7 @@ class PostCompose extends React.Component {
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-        this.setState({ description: nextProps.newPost.description });
+        this.setState({ body: nextProps.newPost.body });
     }
 
     handleSubmit(e) {
@@ -44,6 +44,9 @@ class PostCompose extends React.Component {
         // it pulls the image from firebase
         task.on('state_changed',
           function progress(snapshot) {
+            var percentage =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            uploader.value = percentage;
           },
 
           function error(err) {
@@ -57,7 +60,7 @@ class PostCompose extends React.Component {
                   // That way they are only saved to db if an image is successfully uploaded to firebase.
                   let post = {
                       title: that.state.title,
-                      description: that.state.description,
+                      body: that.state.body,
                       imageUrl: url
                   }
     
@@ -132,9 +135,9 @@ class PostCompose extends React.Component {
                   <input
                     type="textarea"
                     id="desc"
-                    value={this.state.description}
-                    onChange={this.update("description")}
-                    placeholder="Image Description..."
+                    value={this.state.body}
+                    onChange={this.update("body")}
+                    placeholder="Image Body..."
                   />
                 </div>
                 <div>
