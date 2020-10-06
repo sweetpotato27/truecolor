@@ -4,7 +4,9 @@
 @import "./css/class_names.css";
 
 body {
-    font-family: sans-serif;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 500;
+    font-style: normal;
     color: #1c1c1c;
     background-color: #fff;
     min-height: 100vh;
