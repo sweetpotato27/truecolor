@@ -20,7 +20,7 @@ class PostCompose extends React.Component {
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-        this.setState({ description: nextProps.newPost.description });
+        this.setState({ body: nextProps.newPost.body });
     }
 
     handleSubmit(e) {
@@ -28,6 +28,11 @@ class PostCompose extends React.Component {
         e.preventDefault();
         //Get file
         let file = this.fileInput.current.files[0];
+        
+        //Get Element
+        let uploader = document.getElementById('uploader');
+        uploader.style.display = "block";
+        let success = document.getElementById("successful-post-compose");
 
         // Create a storage ref
         let storageRef = firebase.storage().ref('images/' + file.name);
@@ -39,6 +44,9 @@ class PostCompose extends React.Component {
         // it pulls the image from firebase
         task.on('state_changed',
           function progress(snapshot) {
+            var percentage =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            uploader.value = percentage;
           },
 
           function error(err) {
@@ -52,15 +60,18 @@ class PostCompose extends React.Component {
                   // That way they are only saved to db if an image is successfully uploaded to firebase.
                   let post = {
                       title: that.state.title,
-                      description: that.state.description,
+                      body: that.state.body,
                       imageUrl: url
                   }
     
-                  that.props.composePost(post);
+                that.props.composePost(post)
+                          .then(() => setTimeout(() => success.style.display = "block", 1))
+                          .then(() => uploader.style.display = "none")
+                          .then(() => setTimeout(() => that.props.history.push("/posts"), 2500));
                   that.setState({ title: '',
-                                  description: '',
+                                  body: '',
                                   imageUrl: '' });
-    
+                
               }).catch(function(error) {
     
                   // A full list of error codes is available at
@@ -93,6 +104,20 @@ class PostCompose extends React.Component {
 
 
     render() {
+       let imageOrProgress;
+       !this.state.imageUrl
+         ? (imageOrProgress = (
+             <div className="progress-div">
+               <br />
+               <progress value="0" max="100" id="uploader"></progress>
+             </div>
+           ))
+         : (imageOrProgress = (
+             <div className="post-box-div">
+               <br />
+               <PostBox imageUrl={this.state.imageUrl} />
+             </div>
+           ));
         return (
           <div>
             <form onSubmit={this.handleSubmit}>
@@ -110,9 +135,9 @@ class PostCompose extends React.Component {
                   <input
                     type="textarea"
                     id="desc"
-                    value={this.state.description}
-                    onChange={this.update("description")}
-                    placeholder="Image Description..."
+                    value={this.state.body}
+                    onChange={this.update("body")}
+                    placeholder="Image Body..."
                   />
                 </div>
                 <div>
@@ -123,9 +148,10 @@ class PostCompose extends React.Component {
                 </div>
               </div>
             </form>
-            <div id="image-div"></div>
-            <br />
-            <PostBox text={this.state.newPost} />
+            {imageOrProgress}
+            <div>
+              <h2 id="successful-post-compose" >Successful Compose!</h2>
+            </div>
           </div>
         );
       }

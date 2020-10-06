@@ -2,6 +2,7 @@
 
 @import "./css/reset.css";
 @import "./css/class_names.css";
+@import "./css/id_names.css";
 
 body {
     font-family: neue-haas-grotesk-display, sans-serif;
