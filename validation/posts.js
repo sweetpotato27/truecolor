@@ -8,6 +8,11 @@ module.exports = function validatePostInput(data) {
     
     data.title = validText(data.title) ? data.title : '';
     data.body = validText(data.body) ? data.body : '';
+    if (data.imageUrl.split(", ").length > 1) {
+        console.log("multiple");
+    } else {
+        console.log("solo");
+    }
     data.imageUrl = validText(data.imageUrl) ? data.imageUrl : '';
 
     if (Validator.isEmpty(data.body)) {
