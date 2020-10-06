@@ -20,9 +20,6 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    background-color: transparent;
-    margin: 0 0 40px 0;
-    padding: 5px 0;
     border-bottom: solid 1px #d6d6d6;
     position: relative;
 }
@@ -34,7 +31,6 @@
 
 .hyperlink-div {
     margin: 20px 25px 20px 25px;
-
 }
 
 .hyperlink {
@@ -49,7 +45,7 @@
 }
 
 .image {
-    max-width: 75vw;
+    max-width: 90vw;
 }
 
 .all-posts > h2 {
@@ -57,30 +53,4 @@
     justify-content: center;
     margin: 10px;
     font-size: 27px;
-}
-
-.post-box-div {
-    display: flex;
-    width: 100vw;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-bottom: solid 1px #d6d6d6;
-    margin: 20px 0;
-    position: relative;
-}
-
-.post-box-div h2 {
-    font-weight: bold;
-    padding: 10px 0;
-}
-
-.post-box-div h3 {
-    padding: 10px 0;
-    max-width: 50vw;
-    line-height: 140%;
-}
-
-.post-box-div img {
-    padding: 20px 0;
 }
