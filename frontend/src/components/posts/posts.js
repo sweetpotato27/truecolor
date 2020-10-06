@@ -29,12 +29,13 @@ class Post extends React.Component {
                 <div className="all-posts">
                     <div className="all-posts-div">
                         {this.state.posts.map(post => (
-                            <PostBox key={post._id} 
+                            <PostBox key={post._id}
                                     className="post-box"
-                                    user={post.user} 
-                                    title={post.title} 
-                                    body={post.body} 
-                                    imageUrl={post.imageUrl} />
+                                    user={post.user}
+                                    title={post.title}
+                                    body={post.body}
+                                    imageUrl={post.imageUrl}
+                                    date={post.date} />
                         ))}
                     </div>
                 </div>
