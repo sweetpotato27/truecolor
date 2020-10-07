@@ -28,7 +28,7 @@ class PostCompose extends React.Component {
         e.preventDefault();
         //Get file
         let file = this.fileInput.current.files[0];
-        
+
         //Get Element
         let uploader = document.getElementById('uploader');
         uploader.style.display = "block";
@@ -53,9 +53,9 @@ class PostCompose extends React.Component {
           },
           function complete() {
               storageRef.getDownloadURL().then(function(url) {
-    
+
                   // we can save url to our database here!
-                  // we should probably save the title and description and other attributes 
+                  // we should probably save the title and description and other attributes
                   // of a new post here as well.
                   // That way they are only saved to db if an image is successfully uploaded to firebase.
                   let post = {
@@ -63,7 +63,7 @@ class PostCompose extends React.Component {
                       body: that.state.body,
                       imageUrl: url
                   }
-    
+
                 that.props.composePost(post)
                           .then(() => setTimeout(() => success.style.display = "block", 1))
                           .then(() => uploader.style.display = "none")
@@ -71,9 +71,9 @@ class PostCompose extends React.Component {
                   that.setState({ title: '',
                                   body: '',
                                   imageUrl: '' });
-                
+
               }).catch(function(error) {
-    
+
                   // A full list of error codes is available at
                   // https://firebase.google.com/docs/storgage/web/handle-errors
                   switch (error.code) {
@@ -93,7 +93,7 @@ class PostCompose extends React.Component {
                           break;
                   }
               })
-              
+
           }
         );
     }
@@ -150,7 +150,7 @@ class PostCompose extends React.Component {
             </form>
             {imageOrProgress}
             <div>
-              <h2 id="successful-post-compose" >Successful Compose!</h2>
+              <h2 id="successful-post-compose" >Post uploaded successfully!</h2>
             </div>
           </div>
         );
