@@ -22,6 +22,8 @@ class PostCompose extends React.Component {
         this.storeFilesInFirebase = this.storeFilesInFirebase.bind(this);
     }
 
+ 
+
     UNSAFE_componentWillReceiveProps(nextProps) {
         this.setState({ body: nextProps.newPost.body });
     }
