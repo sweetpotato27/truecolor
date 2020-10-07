@@ -1,6 +1,7 @@
 /* This file is linked to index.css */
 .app {
-    width: 100vw;
+    width: 75vw;
+    margin: auto;
 }
 
 .session-form {
@@ -20,8 +21,11 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    border-bottom: solid 1px #d6d6d6;
-    position: relative;
+    background-color: rgba(255, 255, 255);
+    border-bottom: solid 1px #2b2b2b;
+    position: sticky;
+    top: 0;
+    z-index: 99;
 }
 
 .navbar > h1 {
@@ -36,7 +40,7 @@
 .hyperlink {
     margin: 0px 10px 0px 10px;
     color: #1c1c1c;
-    font-size: 16px;
+    font-size: .9rem;
     text-decoration-line: none;
 }
 
@@ -54,3 +58,10 @@
     margin: 10px;
     font-size: 27px;
 }
+
+.all-posts-div {
+}
+
+.post-box {
+}
+

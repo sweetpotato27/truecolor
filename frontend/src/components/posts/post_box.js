@@ -6,6 +6,9 @@ class PostBox extends React.Component {
     render() {
         return (
             <div className="post-box-div">
+
+                <h3 class="user">{this.props.user ? this.props.user : ""}</h3>
+                <h3 class="date">{this.props.date ? this.props.date.split("T")[0] : ""}</h3>
                 <h3>{this.props.user ? this.props.user : ""}</h3>
                 <h3>{this.props.date ? this.props.date.split("T")[0] : ""}</h3>
                 {/* should we have similar logic for the image tag? */}
