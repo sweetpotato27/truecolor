@@ -49,7 +49,7 @@
 }
 
 .image {
-    max-width: 75vw;
+    max-width: 90%;
 }
 
 .all-posts > h2 {
@@ -63,10 +63,4 @@
 }
 
 .post-box {
-}
-
-#body {
-    text-align: justify;
-    line-height: 1.2rem;
-    max-width: 50vw;
 }
