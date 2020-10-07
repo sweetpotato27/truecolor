@@ -1,6 +1,7 @@
 /* This file is linked to index.css */
 .app {
-    width: 100vw;
+    width: 75vw;
+    margin: auto;
 }
 
 .session-form {
@@ -8,7 +9,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    
+
 }
 
 .session-form-div {
@@ -20,11 +21,11 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    background-color: transparent;
-    margin: 0 0 40px 0;
-    padding: 5px 0;
-    border-bottom: solid 1px #d6d6d6;
-    position: relative;
+    background-color: rgba(255, 255, 255);
+    border-bottom: solid 1px #2b2b2b;
+    position: sticky;
+    top: 0;
+    z-index: 99;
 }
 
 .navbar > h1 {
@@ -34,13 +35,12 @@
 
 .hyperlink-div {
     margin: 20px 25px 20px 25px;
-
 }
 
 .hyperlink {
     margin: 0px 10px 0px 10px;
     color: #1c1c1c;
-    font-size: 16px;
+    font-size: .9rem;
     text-decoration-line: none;
 }
 
@@ -49,7 +49,7 @@
 }
 
 .image {
-    max-width: 75vw;
+    max-width: 90vw;
 }
 
 .all-posts > h2 {
@@ -59,28 +59,9 @@
     font-size: 27px;
 }
 
-.post-box-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-bottom: solid 1px #d6d6d6;
-    padding-bottom: 2px;
-    margin-bottom: 20px;
-    position: relative;
+.all-posts-div {
 }
 
-.post-box-div h2 {
-    font-weight: bold;
-    padding: 10px 0;
+.post-box {
 }
 
-.post-box-div h3 {
-    padding: 10px 0;
-    max-width: 50vw;
-    line-height: 140%;
-}
-
-.post-box-div img {
-    padding: 20px 0; 
-}

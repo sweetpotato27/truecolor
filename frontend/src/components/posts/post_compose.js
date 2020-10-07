@@ -30,7 +30,6 @@ class PostCompose extends React.Component {
       const promises = [];
       let that = this;
       let files;
-
       e.preventDefault();
       
       files = this.fileInput.current.files;
@@ -87,6 +86,7 @@ class PostCompose extends React.Component {
 
           function error(err) {},
           function complete() {
+
             storageRef.getDownloadURL().then(function (url) {
                 // we can save url to our database here!
                 // we should probably save the title and description and other attributes
@@ -120,6 +120,7 @@ class PostCompose extends React.Component {
             }
           );
       });
+
     }
 
     update(property) {
@@ -174,7 +175,7 @@ class PostCompose extends React.Component {
             </form>
             {imageOrProgress}
             <div>
-              <h2 id="successful-post-compose" >Successful Compose!</h2>
+              <h2 id="successful-post-compose" >Post uploaded successfully!</h2>
             </div>
           </div>
         );
