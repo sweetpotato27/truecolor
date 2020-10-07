@@ -12,7 +12,7 @@ class PostBox extends React.Component {
                 {/* might make sense to have a simple logo as placeholder for unloadable imageUrls */}
                 <img className="image" src={this.props.imageUrl} alt=""></img>
                 <h2>{this.props.title ? this.props.title : ""}</h2>
-                <p>{this.props.body ? this.props.body : ""}</p>
+                <p id="body">{this.props.body ? this.props.body : ""}</p>
                 <hr></hr>
             </div>
         );

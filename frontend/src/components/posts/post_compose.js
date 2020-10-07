@@ -128,7 +128,7 @@ class PostCompose extends React.Component {
                     id="title"
                     value={this.state.title}
                     onChange={this.update("title")}
-                    placeholder="Image Title..."
+                    placeholder="Title (optional)"
                   />
                 </div>
                 <div>
@@ -137,7 +137,7 @@ class PostCompose extends React.Component {
                     id="desc"
                     value={this.state.body}
                     onChange={this.update("body")}
-                    placeholder="Image Body..."
+                    placeholder="Body (optional)"
                   />
                 </div>
                 <div>
@@ -150,7 +150,7 @@ class PostCompose extends React.Component {
             </form>
             {imageOrProgress}
             <div>
-              <h2 id="successful-post-compose" >Post uploaded successfully!</h2>
+              <h2 id="successful-post-compose" >Posted successfully!</h2>
             </div>
           </div>
         );

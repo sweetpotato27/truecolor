@@ -64,3 +64,9 @@
 
 .post-box {
 }
+
+#body {
+    text-align: justify;
+    line-height: 1.2rem;
+    max-width: 50vw;
+}
