@@ -6,10 +6,8 @@
 
 body {
     font-family: acumin-pro, sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: .9rem;
-    line-height: 140%;
+    font-size: .85rem;
+    line-height: 1.6em;
     color: #2b2b2b;
     background-color: #fff;
     min-height: 100vh;
@@ -27,8 +25,7 @@ h1, h2 {
     font-weight: bold;
 }
 
-h3.user {
-  font-weight:;
+.user {
 }
 
 .date {
@@ -52,9 +49,6 @@ h3.user {
 .post-box-div h2 {
     font-weight: bold;
     padding: 25px 0 15px;
-<<<<<<< HEAD
-=======
-    border-bottom: solid 1px #d6d6d6;
     margin: 20px 0;
     position: relative;
 }
@@ -67,8 +61,6 @@ h3.user {
 .post-box-div h2 {
     font-weight: bold;
     padding: 10px 0;
-
->>>>>>> d4475fefdaafea97f444b382ea3b2bccd6907bd9
 }
 
 .post-box-div h3 {

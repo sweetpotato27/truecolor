@@ -39,11 +39,11 @@ class PostBox extends React.Component {
                         <input type="button"
                                 id="gallery-button-left"
                                 onClick={this.clickButton("left")}
-                                value="left"/>
+                                value="<"/>
                         <input type="button"
                                 id="gallery-button-right"
                                 onClick={this.clickButton("right")}
-                                value="right"/>
+                                value=">"/>
                     </div>
                 </div>
             )
@@ -52,28 +52,13 @@ class PostBox extends React.Component {
                     <img className="image" src={this.props.imageUrl} alt=""></img>
                 </div>
             )
-        // !this.state.imageUrl ?
-        //     (imageOrProgress = (
-        //         <div className="progress-div">
-        //             <br />
-        //             <progress value="0" max="100" id="uploader"></progress>
-        //         </div>
-        //     ))
-        //     : (imageOrProgress = (
-        //         <div className="post-box-div">
-        //             <br />
-        //             <PostBox imageUrl={this.state.imageUrl} />
-        //         </div>
-        //     ));
+
         return (
             <div className="post-box-div">
                 <h3 className="user">{this.props.user ? this.props.user : ""}</h3>
                 <h3 className="date">{this.props.date ? this.props.date.split("T")[0] : ""}</h3>
-                <h3>{this.props.user ? this.props.user : ""}</h3>
-                <h3>{this.props.date ? this.props.date.split("T")[0] : ""}</h3>
                 {/* should we have similar logic for the image tag? */}
                 {/* might make sense to have a simple logo as placeholder for unloadable imageUrls */}
-
                 {multipleOrNot}
                 <h2>{this.props.title ? this.props.title : ""}</h2>
                 <p>{this.props.body ? this.props.body : ""}</p>
