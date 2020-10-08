@@ -51,7 +51,7 @@ router.post('/',
         console.log(newPost);
         newPost.save()
             .then(post => res.json(post))
-            .catch(err => console.log(err));
+            .catch(err => res.status(400).json(err));
 
     }
 );
