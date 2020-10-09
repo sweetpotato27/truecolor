@@ -12,7 +12,7 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormcontainer from './session/signup_form_container';
 import ProfileContainer from './profile/profile_container';
 import PostComposeContainer from './posts/post_compose_container';
-import infoContainer from './website-information/info_container';
+import infoContainer from './website-information/info';
 
 // At this point, we should be thinking about 
 // our own project and which kinds of routes are 
