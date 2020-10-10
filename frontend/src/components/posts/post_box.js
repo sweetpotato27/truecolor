@@ -62,9 +62,13 @@ class PostBox extends React.Component {
             <div className="post-box-div">
                 <div class="post-header">
                     <div className="name">
-                        <div class="profile-image" data-image-mode="cover" item-prop="image"></div>
-                        <h3><a href="#">{this.props.user ? this.props.user : ""}</a></h3>
+                        <a href="#">
+                        <div class="profile-image" item-prop="image"></div>
+                        <div class="post-name">
+                            <h3><a href="#">{this.props.user ? this.props.user : ""}</a></h3>
                         </div>
+                        </a>
+                    </div>
                         <div className="date">
                             <h3>{this.props.date ? this.props.date.split("T")[0] : ""}</h3>
                         </div>

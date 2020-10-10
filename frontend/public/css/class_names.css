@@ -92,9 +92,6 @@
     align-content:
 }
 
-.post-body {
-}
-
 .profile-image {
     background-color: #2b2b2b;
     background-image: url(https://i.pinimg.com/originals/92/15/f6/9215f65dd4297f0e7aa159fabd0924cc.jpg);
@@ -105,4 +102,9 @@
     display: inline-block;
     vertical-align: middle;
     margin-right: 12px;
+    float: left;
+}
+
+.post-name {
+    float: left;
 }
