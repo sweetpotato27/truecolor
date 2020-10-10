@@ -23,7 +23,6 @@ class NavBar extends React.Component {
                     <Link className="hyperlink" to={'/posts'}>Feed</Link>
                     <Link className="hyperlink" to={'/info'}>Info</Link>
                     <Link className="hyperlink" to={'/contributors'}>Contributors</Link>
-                    <Link className="hyperlink" to={'/calendar'}>Calendar</Link>
                     <Link className="hyperlink" to={'https://instagram.com/truecolormag'}>Instagram</Link>
                     <Link className="hyperlink" to={'/new_post'}>Upload</Link>
                     <Link className="hyperlink" to={'/profile'}>Profile</Link>
