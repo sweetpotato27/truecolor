@@ -26,12 +26,12 @@ const App = () => (
             <AuthRoute exact path="/" component={MainPage} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormcontainer} />
-
-            <ProtectedRoute exact path="/posts" component={PostContainer} />
-            <ProtectedRoute exact path="/profile" component={ProfileContainer} />
+            <AuthRoute exact path="/posts" component={PostContainer} />
+            <AuthRoute exact path="/profile" component={ProfileContainer} />
+            <AuthRoute exact path="/info" component={Info} />
+            <AuthRoute exact path="/contributors" component={Contributors} />
+            
             <ProtectedRoute exact path="/new_post" component={PostComposeContainer} />
-            <ProtectedRoute exact path="/info" component={Info} />
-            <ProtectedRoute exact path="/contributors" component={Contributors} />
         </Switch>
         <FooterContainer />
     </div>
