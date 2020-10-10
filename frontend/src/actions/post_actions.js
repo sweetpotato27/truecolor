@@ -4,11 +4,18 @@ import { getPosts, getUserPosts, writePost } from '../util/post_api_util';
 
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
 export const RECEIVE_USER_POSTS = "RECEIVE_USER_POSTS";
+export const RECEIVE_POST_ERRORS = "RECEIVE_POST_ERRORS";
 export const RECEIVE_NEW_POST = "RECEIVE_NEW_POST";
 
 export const receivePosts = posts => ({
     type: RECEIVE_POSTS,
     posts
+});
+
+// We dispatch this one to show authentication errors on the frontend
+export const receiveErrors = (errors) => ({
+  type: RECEIVE_POST_ERRORS,
+  errors,
 });
 
 export const receiveUserPosts = posts => ({
