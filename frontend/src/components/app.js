@@ -4,7 +4,7 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/routes_util';
 import { Switch } from 'react-router-dom';
 import NavBarContainer from './nav/navbar_container';
-import FooterContainer from './footer/footer';
+import Footer from './footer/footer';
 
 import PostContainer from './posts/posts_container';
 import MainPage from './main/main_page';
@@ -15,8 +15,8 @@ import PostComposeContainer from './posts/post_compose_container';
 import Info from './website-information/info';
 import Contributors from './website-information/contributors';
 
-// At this point, we should be thinking about 
-// our own project and which kinds of routes are 
+// At this point, we should be thinking about
+// our own project and which kinds of routes are
 // required for the unique needs of our app.
 
 const App = () => (
@@ -33,7 +33,7 @@ const App = () => (
             <ProtectedRoute exact path="/info" component={Info} />
             <ProtectedRoute exact path="/contributors" component={Contributors} />
         </Switch>
-        <FooterContainer />
+        <Footer />
     </div>
 );
 

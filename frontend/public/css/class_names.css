@@ -1,7 +1,8 @@
 /* This file is linked to index.css */
 .app {
-    width: 75vw;
+    width: 60vw;
     margin: auto;
+    position: relative;
 }
 
 .session-form {
@@ -9,7 +10,6 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-
 }
 
 .session-form-div {
@@ -21,26 +21,26 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    width: 60vw;
     background-color: rgba(255, 255, 255);
-    border-bottom: solid 1px #2b2b2b;
-    position: sticky;
+    border-bottom: solid 1px lightgrey;
+    position: fixed;
     top: 0;
     z-index: 99;
 }
 
 .navbar > h1 {
     text-transform: uppercase;
-    margin: 20px 25px 20px 25px;
+    margin: 20px 25px 25px -10px;
 }
 
 .hyperlink-div {
-    margin: 20px 25px 20px 25px;
+    margin: 20px 0 20px 25px;
 }
 
 .hyperlink {
     margin: 0px 10px 0px 10px;
-    color: #1c1c1c;
-    font-size: .9rem;
+    color: #2b2b2b;
     text-decoration-line: none;
 }
 
@@ -49,19 +49,60 @@
 }
 
 .image {
-    max-width: 90%;
+    width: 60vw;
+    height: auto;
+    padding: 20px 0;
 }
 
 .all-posts > h2 {
     display: flex;
     justify-content: center;
-    margin: 10px;
     font-size: 27px;
 }
 
 .all-posts-div {
+    padding-top: 62px;
 }
 
-.post-box {
+.post-box-div {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 40px 0 20px 0;
+    position: relative;
+    border-bottom: solid 1px lightgrey;
 }
 
+.name {
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    padding-bottom: 20px;
+}
+
+.date {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-content:
+}
+
+.post-body {
+}
+
+.profile-image {
+    background-color: #2b2b2b;
+    background-image: url(https://i.pinimg.com/originals/92/15/f6/9215f65dd4297f0e7aa159fabd0924cc.jpg);
+    background-size: cover;
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 12px;
+}
