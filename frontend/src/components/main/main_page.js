@@ -1,12 +1,18 @@
 // src/components/main/main_page.js
 
 import React from 'react';
+import Header from '../nav/header';
 
 class MainPage extends React.Component {
+
+    // componentDidMount(props) {
+    //     document.addEventListener()
+    // }
+
     render() {
         return (
             <div className="main">
-                <h1>True Color</h1>
+                <Header type={"header__landing"}/>
             </div>
         );
     }
