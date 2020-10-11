@@ -15,7 +15,6 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-
 }
 
 .session-form-div {
@@ -36,17 +35,16 @@
 
 .navbar > h1 {
     text-transform: uppercase;
-    margin: 20px 25px 20px 25px;
+    margin: 20px 25px 25px -10px;
 }
 
 .hyperlink-div {
-    margin: 20px 25px 20px 25px;
+    margin: 20px 0 20px 25px;
 }
 
 .hyperlink {
     margin: 0px 10px 0px 10px;
-    color: #1c1c1c;
-    font-size: .9rem;
+    color: #2b2b2b;
     text-decoration-line: none;
 }
 
@@ -55,13 +53,14 @@
 }
 
 .image {
-    max-width: 90%;
+    width: 60vw;
+    height: auto;
+    padding: 20px 0;
 }
 
 .all-posts > h2 {
     display: flex;
     justify-content: center;
-    margin: 10px;
     font-size: 27px;
 }
 
@@ -79,9 +78,6 @@
   background: transparent;
 }
 
-/* .navbar-dropdown-container {
-    position: fixed;
-} */
 
 
 

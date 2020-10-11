@@ -162,6 +162,35 @@ class PostCompose extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <div>
+            <form onSubmit={this.handleSubmit}>
+              <div>
+                <div>
+                  <input
+                    type="textarea"
+                    id="title"
+                    value={this.state.title}
+                    onChange={this.update("title")}
+                    placeholder="Title (optional)"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="textarea"
+                    id="desc"
+                    value={this.state.body}
+                    onChange={this.update("body")}
+                    placeholder="Body (optional)"
+                  />
+                </div>
+                <div>
+                  <input type="file" ref={this.fileInput} multiple/>
+                </div>
+                <div>
+                  <input type="submit" value="Submit" />
+                </div>
+              </div>
+            </form>
+            {imageOrProgress}
             <div>
               <input
                 type="textarea"

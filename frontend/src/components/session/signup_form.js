@@ -73,7 +73,7 @@ class SignupForm extends React.Component {
               type="text"
               value={this.state.handle}
               onChange={this.update("handle")}
-              placeholder="Handle"
+              placeholder="Full Name"
             />
             <br />
             <input

@@ -5,16 +5,22 @@
 @import "./css/id_names.css";
 @import "./css/modal.css";
 
+* {
+ box-sizing: border-box;
+}
+*:before,
+*:after {
+ box-sizing: border-box;
+}
+
 body {
     font-family: acumin-pro, sans-serif;
-    font-weight: 400;
-    font-style: normal;
     font-size: .9rem;
     line-height: 140%;
     color: rgb(56, 56, 56);
     background-color: #fff;
-    min-height: 100vh;
-
+    height: 100%;
+    position: relative;
 }
 
 #root {
@@ -32,8 +38,9 @@ h3.user {
   font-weight: bold;
 }
 
-.date {
-  color: #a1a1a1;
+a {
+  color: #2b2b2b;
+  text-decoration-line: none;
 }
 
 .post-box-div {
@@ -49,28 +56,90 @@ h3.user {
 
 .post-box-div h2 {
     font-weight: bold;
-    padding: 25px 0 15px;
-    border-bottom: solid 1px #d6d6d6;
-    margin: 20px 0;
+    padding: 12px 0;
     position: relative;
 }
 
-.post-box-div p {
-    padding: 10px 0;
-    max-width: 80vw;
-}
-
-.post-box-div h2 {
-    font-weight: bold;
-    padding: 10px 0;
-
-}
-
 .post-box-div h3 {
-    padding: 10px 0;
-    max-width: 90vw;
 }
 
-.post-box-div img {
-    padding: 20px 0;
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 10px 0 20px;
+  position: relative;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.column-left {
+  margin: 20px 0 0 0;
+  width: 40%;
+}
+
+.column-right {
+  margin: 20px 0 0 0;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+i {
+  margin: 20px 0 0 0;
+  padding: 0 8px 0 0;
+}
+
+button {
+    background-color: white;
+    border: solid 1px;
+    border-color: #0000ff;
+    display: inline-block;
+    cursor: pointer;
+    color: #0000ff;
+    padding: 4px 12px;
+    text-decoration: none;
+}
+
+button:hover {
+  background-color: #0000ff;
+  color: white;
+}
+
+button:active {
+	position:relative;
+	top: 1px;
+}
+
+.newsletter-button {
+  padding: 10px 0;
+}
+
+.info {
+  padding: 10px 0 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .app {
+    width: 95vw;
+    overflow: scroll;
+  }
+
+  body {
+    font-size: 1rem;
+  }
+
+  .navbar {
+    width: 100%;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+  }
+
 }
