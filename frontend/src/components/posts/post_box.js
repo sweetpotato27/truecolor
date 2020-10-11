@@ -66,6 +66,7 @@ class PostBox extends React.Component {
                 {/* might make sense to have a simple logo as placeholder for unloadable imageUrls */}
                 
                 {multipleOrNot}
+                {console.log(this.props.title)}
                 <h2>{this.props.title ? this.props.title : ""}</h2>
                 <p>{this.props.body ? this.props.body : ""}</p>
                 <hr></hr>

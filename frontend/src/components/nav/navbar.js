@@ -6,8 +6,13 @@ import { Link } from 'react-router-dom';
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            newPost: true
+        }
         this.logoutUser = this.logoutUser.bind(this);
         this.getLinks = this.getLinks.bind(this);
+        this.clickedLink = this.clickedLink.bind(this);
+        this.handelOpenModal = this.handleOpenModal.bind(this);
     }
 
     logoutUser(e) {
@@ -15,35 +20,44 @@ class NavBar extends React.Component {
         this.props.logout();
     }
 
+    clickedLink(e) {
+        this.setState({
+            newPost: !this.state.newPost
+        })
+    }
+
+    handleOpenModal(type) {
+        this.props.openModal(type);
+    }
+
     // Selectively render links dependent on whether the user is logged in
     getLinks() {
-        if(this.props.loggedIn) {
-            return (
-                <div className="hyperlink-div">
-                    <Link className="hyperlink" to={'https://instagram.com/truecolormag'}>Instagram</Link>
-                    <Link className="hyperlink" to={'/new_post'}>Upload</Link>
-                    <Link className="hyperlink" to={'/profile'}>Profile</Link>
-                    <button onClick={this.logoutUser}>Logout</button>
-                </div>
-            );
+        let navIcon;
+        let href;
+        href = window.location.href.split("/");
+        href = href.splice(0, 3)
+        href = href.join("/");
+        if (window.location.href === href + "/#/") {
+            navIcon = <Link className="hyperlink" to={`/posts`}>posts</Link>
         } else {
-            return (
-                <div className="hyperlink-div">
-                    {/* <Link className="hyperlink" to={'/signup'}>Signup</Link>
-                    <Link className="hyperlink" to={'/login'}>Login</Link> */}
-                    <Link className="hyperlink" to={'/posts'}>Feed</Link>
-                    <Link className="hyperlink" to={'/info'}>Info</Link>
-                    <Link className="hyperlink" to={'/contributors'}>Contributors</Link>
-                    <Link className="hyperlink" to={'/calendar'}>Calendar</Link>
-                </div>
-            );
-        }
+            navIcon = <button className="header__navbar-profile"
+                            onClick={() => this.handleOpenModal("profile")}>
+                        </button>
+        }        
+        return (
+            <div className="hyperlink-div">
+                {navIcon}
+                {/* <Link className="hyperlink" to={'/feed'}>Feed</Link>
+                <Link className="hyperlink" to={'/info'}>Info</Link>
+                <Link className="hyperlink" to={'/contributors'}>Contributors</Link> */}
+            </div>
+        );
     }
 
     render() {
         return (
             <div className="navbar">
-                <h1><Link className="hyperlink" to={'/posts'}>True Color</Link></h1>
+                <h1><Link className="hyperlink" to={'/'}>True Color</Link></h1>
                 { this.getLinks() }
             </div>
         );

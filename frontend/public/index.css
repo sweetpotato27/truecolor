@@ -3,6 +3,7 @@
 @import "./css/reset.css";
 @import "./css/class_names.css";
 @import "./css/id_names.css";
+@import "./css/modal.css";
 
 body {
     font-family: acumin-pro, sans-serif;
@@ -10,7 +11,7 @@ body {
     font-style: normal;
     font-size: .9rem;
     line-height: 140%;
-    color: #2b2b2b;
+    color: rgb(56, 56, 56);
     background-color: #fff;
     min-height: 100vh;
 
@@ -28,14 +29,11 @@ h1, h2 {
 }
 
 h3.user {
-  font-weight:;
+  font-weight: bold;
 }
 
 .date {
   color: #a1a1a1;
-}
-
-.user {
 }
 
 .post-box-div {

@@ -2,9 +2,8 @@
 
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/routes_util';
-import { Switch } from 'react-router-dom';
-import NavBarContainer from './nav/navbar_container';
-import FooterContainer from './footer/footer';
+import { Switch, Route } from 'react-router-dom';
+import Modal from './modal/modal';
 
 import PostContainer from './posts/posts_container';
 import MainPage from './main/main_page';
@@ -21,19 +20,19 @@ import Contributors from './website-information/contributors';
 
 const App = () => (
     <div className="app">
-        <NavBarContainer />
+        <Modal />
         <Switch>
-            <AuthRoute exact path="/" component={MainPage} />
+            <Route exact path="/" component={MainPage} />
+            <Route exact path="/posts" component={PostContainer} />
+            <Route exact path="/profile" component={ProfileContainer} />
+            <Route exact path="/info" component={Info} />
+            <Route exact path="/contributors" component={Contributors} />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormcontainer} />
-            <AuthRoute exact path="/posts" component={PostContainer} />
-            <AuthRoute exact path="/profile" component={ProfileContainer} />
-            <AuthRoute exact path="/info" component={Info} />
-            <AuthRoute exact path="/contributors" component={Contributors} />
-            
+
             <ProtectedRoute exact path="/new_post" component={PostComposeContainer} />
+            {/* <ProtectedRoute exact path="/posts" component={PostContainer} /> */}
         </Switch>
-        <FooterContainer />
     </div>
 );
 
