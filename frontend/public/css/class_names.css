@@ -108,3 +108,24 @@
 .post-name {
     float: left;
 }
+
+.contributors {
+    background-color: ;
+    border-bottom: solid 1px lightgrey;
+    margin: auto;
+    padding: 60px 0 30px;
+    position: relative;
+}
+
+.contributors h2 {
+    padding: 20px 0;
+}
+
+.contributors ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+}

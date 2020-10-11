@@ -6,3 +6,16 @@
 #uploader {
     display: none;
 }
+
+#info {
+    background-color: red;
+    border-bottom: solid 1px lightgrey;
+    margin: auto;
+    /* padding: 60px 0 30px; */
+    position: relative;
+    height: 100%;
+}
+
+#info h2 {
+    padding: 20px 0;
+}

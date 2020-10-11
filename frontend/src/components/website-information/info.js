@@ -4,7 +4,7 @@ class Info extends React.Component {
 
     render() {
         return(
-            <div id="info">
+            <div class="info">
                 <h1>Info</h1>
                 <p>True Color is a collaborative community blog featuring photographers and artists.</p>
                 <p>True Color was created and designed by <a href="https://instagram.com/cameronjgetty">Cameron Getty</a> and developed by <a href="https://github.com/sweetpotato27">Dylan Matthews</a>.</p>
