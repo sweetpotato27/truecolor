@@ -80,6 +80,10 @@
     padding-bottom: 20px;
 }
 
+.name-link {
+    color: #2b2b2b;
+}
+
 .date {
     display: flex;
     justify-content: flex-end;
@@ -107,6 +111,20 @@
 
 .post-name {
     float: left;
+}
+
+.info-wrapper {
+    padding: 90px 0 30px;
+    border-bottom: solid 1px lightgrey;
+    position: relative;
+}
+
+.info h2 {
+    padding-bottom: 20px;
+}
+
+.info p {
+    display: block;
 }
 
 .contributors {

@@ -65,7 +65,7 @@ class PostBox extends React.Component {
                         <a href="#">
                         <div class="profile-image" item-prop="image"></div>
                         <div class="post-name">
-                            <h3><a href="#">{this.props.user ? this.props.user : ""}</a></h3>
+                            <h3><a class="name-link" href="#">{this.props.user ? this.props.user : ""}</a></h3>
                         </div>
                         </a>
                     </div>

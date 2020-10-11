@@ -38,7 +38,7 @@ h3 {
 }
 
 a {
-  color: #2b2b2b;
+  color: #0000EE;
   text-decoration-line: none;
 }
 
@@ -63,7 +63,7 @@ footer {
   display: flex;
   justify-content: space-between;
   background-color: white;
-  padding: 10px 0 20px;
+  padding: 10px 0 30px;
   position: relative;
   bottom: 0;
   overflow: hidden;
