@@ -53,7 +53,7 @@ class PostCompose extends React.Component {
         this.composePost(post);
       })
       .catch((errors) => {
-        console.log(errors);
+
       });
   }
 
@@ -63,7 +63,7 @@ class PostCompose extends React.Component {
     this.props
       .composePost(post)
       .then(() => setTimeout(() => {
-        console.log(this.state.shouldCancel)
+
         if (!that.shouldCancel) {
           that.props.history.push("/posts");
         } else {
@@ -148,7 +148,6 @@ class PostCompose extends React.Component {
 
   // Render the post errors if there are any
   renderErrors() {
-    console.log(this.props.errors);
     if (!!this.props.errors) {
       this.shouldCancel = true;
       return (
