@@ -7,7 +7,6 @@ const Modal = ({modal, closeModal}) => {
   if (!modal) return null;
 
   let component;
-  console.log(modal)
   switch(modal.type) {
     case 'profile':
       component = <NavbarDropdownContainer />;

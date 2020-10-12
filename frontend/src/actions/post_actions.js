@@ -13,10 +13,13 @@ export const receivePosts = posts => ({
 });
 
 // We dispatch this one to show authentication errors on the frontend
-export const receiveErrors = (errors) => ({
-  type: RECEIVE_POST_ERRORS,
-  errors,
-});
+export const receiveErrors = (errors) => {
+    // console.log(errors)
+    return ({
+        type: RECEIVE_POST_ERRORS,
+        errors: errors.text
+    })
+};
 
 export const receiveUserPosts = posts => ({
     type: RECEIVE_USER_POSTS,
@@ -31,19 +34,23 @@ export const receiveNewPost = post => ({
 export const fetchPosts = () => dispatch => (
     getPosts()
         .then(posts => dispatch(receivePosts(posts)))
-        .catch(err => console.log(err))
+        .catch(err => dispatch(receiveErrors(err.response.data)))
 );
 
 export const fetchUserPosts = id => dispatch => (
     getUserPosts(id)
         .then(posts => dispatch(receiveUserPosts(posts)))
-        .catch(err => console.log(err))
+        .catch(err => dispatch(receiveErrors(err.response.data)))
 );
 
 export const composePost = data => dispatch => {
+    // console.log("here");
     return (
         writePost(data)
         .then(post => dispatch(receiveNewPost(post)))
-        .catch(err => console.log(err))
+        .catch(err => {
+            // console.log(err.response.data)
+            dispatch(receiveErrors(err.response.data))
+        })
     );
 }

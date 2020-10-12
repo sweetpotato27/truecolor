@@ -30,7 +30,6 @@ class PostBox extends React.Component {
 
     render() {
         let multipleOrNot;
-        // console.log(multipleOrNot);
         !!(this.props.imageUrl.split(", ").length > 1) ?
             multipleOrNot = (
                 <div className="gallery">
@@ -66,7 +65,6 @@ class PostBox extends React.Component {
                 {/* should we have similar logic for the image tag? */}
                 {/* might make sense to have a simple logo as placeholder for unloadable imageUrls */}
                 {multipleOrNot}
-                {console.log(this.props.title)}
                 <h2>{this.props.title ? this.props.title : ""}</h2>
                 <p>{this.props.body ? this.props.body : ""}</p>
                 <hr></hr>

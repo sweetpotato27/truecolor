@@ -13,8 +13,11 @@ class PostCompose extends React.Component {
       body: "",
       imageUrl: "",
       newPost: "",
+      errors: {},
+      shouldCancel: false
     };
 
+    this.shouldCancel = false;
     this.urlArray = [];
     this.fileInput = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,7 +27,9 @@ class PostCompose extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    this.setState({ body: nextProps.newPost.body });
+    if (!!nextProps.newPost) {
+      this.setState({ body: nextProps.newPost.body });
+    }
   }
 
   handleSubmit(e) {
@@ -34,7 +39,6 @@ class PostCompose extends React.Component {
     e.preventDefault();
 
     files = this.fileInput.current.files;
-    console.table(files);
     for (let i = 0; i < files.length; i++) {
       promises.push(that.storeFilesInFirebase(that, files[i]));
     }
@@ -55,17 +59,29 @@ class PostCompose extends React.Component {
 
   composePost(post) {
     let that = this;
-    console.table(post);
+
     this.props
       .composePost(post)
-      .then(() => setTimeout(() => that.props.history.push("/posts"), 2500));
-    this.setState({ title: "", body: "", imageUrl: "" });
+      .then(() => setTimeout(() => {
+        console.log(this.state.shouldCancel)
+        if (!that.shouldCancel) {
+          that.props.history.push("/posts");
+        } else {
+            this.setState({
+              title: "",
+              body: "",
+              imageUrl: "",
+              newPost: ""
+            });
+            that.shouldCancel = false;
+        }
+      }, 2500));
+      this.setState({ title: "", body: "", imageUrl: "" });
   }
 
   storeFilesInFirebase(that, file) {
     let uploader = document.getElementById("uploader");
     let success = document.getElementById("successful-post-compose");
-    console.table(file);
     //Get Element
 
     uploader.style.display = "block";
@@ -132,13 +148,11 @@ class PostCompose extends React.Component {
 
   // Render the post errors if there are any
   renderErrors() {
-    if (!!this.state.errors) {
+    console.log(this.props.errors);
+    if (!!this.props.errors) {
+      this.shouldCancel = true;
       return (
-        <ul>
-          {Object.keys(this.state.errors).map((error, i) => (
-            <li key={`error-${i}`}>{this.state.errors[error]}</li>
-          ))}
-        </ul>
+      <div>{this.props.errors}</div>
       );
     }
   }
@@ -162,34 +176,6 @@ class PostCompose extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <form onSubmit={this.handleSubmit}>
-              <div>
-                <div>
-                  <input
-                    type="textarea"
-                    id="title"
-                    value={this.state.title}
-                    onChange={this.update("title")}
-                    placeholder="Title (optional)"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="textarea"
-                    id="desc"
-                    value={this.state.body}
-                    onChange={this.update("body")}
-                    placeholder="Body (optional)"
-                  />
-                </div>
-                <div>
-                  <input type="file" ref={this.fileInput} multiple/>
-                </div>
-                <div>
-                  <input type="submit" value="Submit" />
-                </div>
-              </div>
-            </form>
             {imageOrProgress}
             <div>
               <input
