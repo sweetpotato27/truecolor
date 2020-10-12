@@ -16,7 +16,6 @@ class MainPage extends React.Component {
         window.addEventListener('keyup', (e) => {
             this.pressed.push(e.key);
             this.pressed.splice(-this.secretCode.length - 1, this.pressed.length - this.secretCode.length);
-            console.log(this.pressed)
             if (this.pressed.join('').includes(this.secretCode)) {
                 let href;
                 href = window.location.href.split("/");
