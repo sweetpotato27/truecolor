@@ -47,12 +47,6 @@ class NavbarDropdown extends React.Component {
             <li className="navbar-dropdown-item">
               <Link className="hyperlink" to={'/contributors'}>Contributors</Link>
             </li>
-            <li className="navbar-dropdown-item">
-              <Link className="hyperlink" to={'/login'}>Login</Link>
-            </li>
-            <li className="navbar-dropdown-item">
-              <Link className="hyperlink" to={'/signup'}>Signup</Link>
-            </li>
           </ul>
         }
     } else if (window.location.href === href + "/#/info") {
