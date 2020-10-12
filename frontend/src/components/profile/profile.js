@@ -13,6 +13,7 @@ class Profile extends React.Component {
     }
 
     UNSAFE_componentWillMount() {
+        console.log(this.props.currentUser.id);
         this.props.fetchUserPosts(this.props.currentUser.id);
     }
 

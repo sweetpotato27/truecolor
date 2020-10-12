@@ -25,13 +25,16 @@ class NavbarDropdown extends React.Component {
           <ul className="navbar-dropdown-list"
               onClick={this.props.closeModal}>
             <li className="navbar-dropdown-item">
+              <Link className="hyperlink" to={'/new_post'}>Compose</Link>
+            </li>
+            <li className="navbar-dropdown-item">
+              <Link className="hyperlink" to={'/profile'}>My Feed</Link>
+            </li>
+            <li className="navbar-dropdown-item">
               <Link className="hyperlink" to={'/info'}>Information</Link>
             </li>
             <li className="navbar-dropdown-item">
               <Link className="hyperlink" to={'/contributors'}>Contributors</Link>
-            </li>
-            <li className="navbar-dropdown-item">
-              <Link className="hyperlink" to={'/new_post'}>Compose</Link>
             </li>
             <li className="navbar-dropdown-item">
               <button className="hyperlink" onClick={this.handleLogout}>Logout</button>
