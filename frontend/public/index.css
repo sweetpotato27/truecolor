@@ -39,7 +39,7 @@ h3.user {
 }
 
 a {
-  color: #2b2b2b;
+  color: #0000EE;
   text-decoration-line: none;
 }
 
@@ -67,10 +67,14 @@ footer {
   display: flex;
   justify-content: space-between;
   background-color: white;
-  padding: 10px 0 20px;
+  padding: 10px 0 30px;
   position: relative;
   bottom: 0;
   overflow: hidden;
+}
+
+footer p {
+  padding: 4px 0;
 }
 
 .column-left {
@@ -90,18 +94,30 @@ footer {
 }
 
 i {
-  margin: 20px 0 0 0;
-  padding: 0 8px 0 0;
+  margin: 12px 0 0 0;
+  padding: 0 12px 0 0;
+}
+
+input[type=email] {
+  border: 1px solid black;
+  padding: 8px 12px;
+  margin: 4px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type=email]:focus {
+  border: 1px solid #0000EE;
 }
 
 button {
     background-color: white;
     border: solid 1px;
     border-color: #0000ff;
-    display: inline-block;
+    display: inline;
     cursor: pointer;
     color: #0000ff;
-    padding: 4px 12px;
+    padding: 8px 12px;
     text-decoration: none;
 }
 
