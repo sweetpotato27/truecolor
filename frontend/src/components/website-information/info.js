@@ -1,4 +1,6 @@
 import React from 'react';
+import NavBarContainer from '../nav/navbar_container';
+
 
 class Info extends React.Component {
 
@@ -18,6 +20,7 @@ class Info extends React.Component {
                             <p>Get daily updates from the site.</p>
                         </div>
 
+
                         <div className="container" style="background-color:white">
                             <input type="text" placeholder="Name" name="name" required />
                             <input type="text" placeholder="Email address" name="mail" required />
@@ -25,7 +28,6 @@ class Info extends React.Component {
                                 <input type="checkbox" checked="checked" name="subscribe"> Daily Newsletter </ input>
                             </label>
                         </div>
-
                         <div className="container">
                             <input type="submit" value="Subscribe" />
                         </div>

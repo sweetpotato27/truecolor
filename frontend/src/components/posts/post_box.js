@@ -30,7 +30,6 @@ class PostBox extends React.Component {
 
     render() {
         let multipleOrNot;
-        // console.log(multipleOrNot);
         !!(this.props.imageUrl.split(", ").length > 1) ?
             multipleOrNot = (
                 <div className="gallery">
@@ -60,6 +59,7 @@ class PostBox extends React.Component {
                 )
         return (
             <div className="post-box-div">
+
                 <div class="post-header">
                     <div className="name">
                         <a href="#">
