@@ -1,8 +1,9 @@
 // src/actions/post_actions.js
 
-import { getPosts, getUserPosts, writePost } from '../util/post_api_util';
+import { getPosts, getPost, getUserPosts, writePost } from '../util/post_api_util';
 
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
+export const RECEIVE_POST = "RECEIVE_POST";
 export const RECEIVE_USER_POSTS = "RECEIVE_USER_POSTS";
 export const RECEIVE_POST_ERRORS = "RECEIVE_POST_ERRORS";
 export const RECEIVE_NEW_POST = "RECEIVE_NEW_POST";
@@ -21,6 +22,11 @@ export const receiveErrors = (errors) => {
     })
 };
 
+export const receivePost = post => ({
+    type: RECEIVE_POST,
+    post: post
+});
+
 export const receiveUserPosts = posts => ({
     type: RECEIVE_USER_POSTS,
     posts
@@ -37,6 +43,11 @@ export const fetchPosts = () => dispatch => (
         .catch(err => dispatch(receiveErrors(err.response.data)))
 );
 
+export const fetchPost = id => dispatch => {
+    return getPost(id)
+            .then(post => dispatch(receivePost(post)));
+}
+
 export const fetchUserPosts = id => dispatch => (
     getUserPosts(id)
         .then(posts => dispatch(receiveUserPosts(posts)))
@@ -44,7 +55,6 @@ export const fetchUserPosts = id => dispatch => (
 );
 
 export const composePost = data => dispatch => {
-
     return (
         writePost(data)
         .then(post => dispatch(receiveNewPost(post)))

@@ -26,6 +26,7 @@ class Post extends React.Component {
         if (this.state.posts.length === 0) {
             return (<div>There are no Posts</div>)
         } else {
+            console.log(this.state.posts[0]._id)
             return (
                 <div>
                     <NavBarContainer />
@@ -34,6 +35,7 @@ class Post extends React.Component {
                             {this.state.posts.map(post => (
                                 <PostBox key={post._id}
                                         className="post-box"
+                                        fizz={post._id}
                                         user={post.user}
                                         title={post.title}
                                         body={post.body}

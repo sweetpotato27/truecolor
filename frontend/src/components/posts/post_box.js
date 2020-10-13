@@ -10,6 +10,7 @@ class PostBox extends React.Component {
             imageIndex: 0
         }
         this.clickButton = this.clickButton.bind(this);
+        this.handlePostClick = this.handlePostClick.bind(this);
     }
 
     clickButton(direction) {
@@ -28,12 +29,22 @@ class PostBox extends React.Component {
         )
     }
 
+    handlePostClick() {
+        console.log(this.props.fizz);
+        console.log(this.props)
+        this.props.history.push(`/posts/${this.props.fizz}`);
+    }
+
     render() {
         let multipleOrNot;
         !!(this.props.imageUrl.split(", ").length > 1) ?
             multipleOrNot = (
                 <div className="gallery">
-                    <img className="image" src={this.state.imageArr[this.state.imageIndex]} alt=""></img>
+                    <div
+                        className="gallery-img-div"
+                        onClick={this.handlePostClick}>
+                        <img className="image" src={this.state.imageArr[this.state.imageIndex]} alt=""></img>
+                    </div>
                     <div>
                         <input type="button"
                                 id="gallery-button-left"
@@ -53,7 +64,9 @@ class PostBox extends React.Component {
                     </div>
                 )
                 : multipleOrNot = (
-                    <div>
+                    <div
+                        className="gallery-img-div"
+                        onClick={this.handlePostClick}>
                         <img className="image" src={this.props.imageUrl} alt=""></img>
                     </div>
                 )
