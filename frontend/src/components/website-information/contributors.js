@@ -5,7 +5,7 @@ class Contributors extends React.Component {
 
     render() {
         return (
-            <div>
+            <div class="contributors">
                 <NavBarContainer />
                 <h1>Contributors</h1>
                 <ul>

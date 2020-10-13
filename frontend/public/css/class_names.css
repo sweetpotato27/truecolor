@@ -35,7 +35,7 @@
 
 .navbar > h1 {
     text-transform: uppercase;
-    margin: 20px 25px 25px -10px;
+    margin: 25px 25px 25px -10px;
 }
 
 .hyperlink-div {
@@ -79,5 +79,68 @@
 }
 
 
+.name-link {
+    color: #2b2b2b;
+}
 
+.date {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+
+
+
+.profile-image {
+    background-color: #2b2b2b;
+    background-image: url(https://i.pinimg.com/originals/92/15/f6/9215f65dd4297f0e7aa159fabd0924cc.jpg);
+    background-size: cover;
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 12px;
+    float: left;
+}
+
+.post-name {
+    float: left;
+}
+
+.info-wrapper {
+    padding: 90px 0 30px;
+    border-bottom: solid 1px lightgrey;
+    position: relative;
+}
+
+.info h2 {
+    padding-bottom: 20px;
+}
+
+.info p {
+    display: block;
+}
+
+.contributors {
+    background-color: ;
+    border-bottom: solid 1px lightgrey;
+    margin: auto;
+    padding: 60px 0 30px;
+    position: relative;
+}
+
+.contributors h2 {
+    padding: 20px 0;
+}
+
+.contributors ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+}
 
