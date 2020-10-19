@@ -30,8 +30,7 @@ class PostBox extends React.Component {
     }
 
     handlePostClick() {
-        console.log(this.props.fizz);
-        console.log(this.props)
+        console.log(this)
         this.props.history.push(`/posts/${this.props.fizz}`);
     }
 
@@ -73,14 +72,14 @@ class PostBox extends React.Component {
         return (
             <div className="post-box-div">
 
-                <div class="post-header">
+                <div className="post-header">
                     <div className="name">
-                        <a href="#">
-                        <div class="profile-image" item-prop="image"></div>
-                        <div class="post-name">
-                            <h3><a class="name-link" href="#">{this.props.user ? this.props.user : ""}</a></h3>
-                        </div>
+                        <a href={`#/posts/${this.props.fizz}`}>
+                            <div className="profile-image" item-prop="image"></div>
                         </a>
+                        <div className="post-name">
+                            <h3>{this.props.user ? this.props.user : ""}</h3>
+                        </div>
                     </div>
                         <div className="date">
                             <h3>{this.props.date ? this.props.date.split("T")[0] : ""}</h3>

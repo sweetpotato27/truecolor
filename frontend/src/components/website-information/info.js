@@ -1,13 +1,12 @@
 import React from 'react';
-import NavBarContainer from '../nav/navbar_container';
 
 
 class Info extends React.Component {
 
     render() {
         return(
-            <div class="info-wrapper">
-                <div class="info">
+            <div className="info-wrapper">
+                <div className="info">
                     <h2>Info</h2>
                     <p>True Color is a collaborative community blog featuring photographers and artists.</p>
                     <p>True Color was created and designed by <a href="https://instagram.com/cameronjgetty">Cameron Getty</a> and developed by <a href="https://github.com/sweetpotato27">Dylan Matthews</a>.</p>

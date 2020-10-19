@@ -5,7 +5,7 @@ import { AuthRoute, ProtectedRoute } from '../util/routes_util';
 import { Switch, Route } from 'react-router-dom';
 import Modal from './modal/modal';
 import PostsContainer from './posts/posts_container';
-// import PostShowContainer from './posts/post_show/post_show_container';
+import PostShowContainer from './posts/post_show/post_show_container';
 import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormcontainer from './session/signup_form_container';
@@ -24,7 +24,7 @@ const App = () => (
         <Switch>
             <Route exact path="/" component={MainPage} />
             <Route exact path="/posts" component={PostsContainer} />
-            {/* <Route exact path="/post/:postId" component={PostShowContainer} /> */}
+            <Route path="/posts/:postId" component={PostShowContainer} />
             <Route exact path="/profile" component={ProfileContainer} />
             <Route exact path="/info" component={Info} />
             <Route exact path="/contributors" component={Contributors} />

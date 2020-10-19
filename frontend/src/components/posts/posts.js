@@ -16,6 +16,7 @@ class Post extends React.Component {
 
     UNSAFE_componentWillMount() {
         this.props.fetchPosts();
+        console.log(this.props.history)
     }
 
     UNSAFE_componentWillReceiveProps(newState) {
@@ -40,7 +41,8 @@ class Post extends React.Component {
                                         title={post.title}
                                         body={post.body}
                                         imageUrl={post.imageUrl}
-                                        date={post.date} />
+                                        date={post.date}
+                                        history={this.props.history} />
                             ))}
                         </div>
                     </div>
