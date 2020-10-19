@@ -1,7 +1,7 @@
 // src/components/posts/post_box.js
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 class PostBox extends React.Component {
     constructor(props) {
@@ -31,13 +31,11 @@ class PostBox extends React.Component {
     }
 
     handlePostClick() {
-        console.log(this)
-        this.props.history.push(`/posts/${this.props.fizz}`);
+        this.props.history.push(`/posts/${this.props.postId}`);
     }
 
     render() {
         let multipleOrNot;
-        console.log(this.props.user)
         !!(this.props.imageUrl.split(", ").length > 1) ?
             multipleOrNot = (
                 <div className="gallery">
@@ -76,7 +74,7 @@ class PostBox extends React.Component {
 
                 <div className="post-header">
                     <div className="name">
-                        <a href={`#/posts/${this.props.fizz}`}>
+                        <a href={`#/users/${this.props.userId}`}>
                             <div className="profile-image" item-prop="image"></div>
                         </a>
                         <div className="post-name">

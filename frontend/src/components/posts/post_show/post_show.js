@@ -13,8 +13,6 @@ class PostShow extends React.Component {
   UNSAFE_componentWillMount() {
       this.props.fetchPost(this.state.postId)
         .then( res => {
-          console.log(res);
-          console.log(this);
           this.setState({
             post: res.post.data
           });
@@ -22,7 +20,6 @@ class PostShow extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(newState) {
-      console.log(newState)
       this.setState({ post: newState.post });
   }
 
