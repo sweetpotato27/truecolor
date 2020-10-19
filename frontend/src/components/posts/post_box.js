@@ -1,6 +1,7 @@
 // src/components/posts/post_box.js
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class PostBox extends React.Component {
     constructor(props) {
@@ -30,6 +31,7 @@ class PostBox extends React.Component {
 
     render() {
         let multipleOrNot;
+        console.log(this.props.user)
         !!(this.props.imageUrl.split(", ").length > 1) ?
             multipleOrNot = (
                 <div className="gallery">
@@ -60,7 +62,7 @@ class PostBox extends React.Component {
         return (
             <div className="post-box-div">
 
-                <h3 className="user">{this.props.user ? this.props.user : ""}</h3>
+                <Link className="user" to="">{this.props.user ? this.props.user : ""}</Link>
                 <h3 className="date">{this.props.date ? this.props.date.split("T")[0] : ""}</h3>
                 {/* should we have similar logic for the image tag? */}
                 {/* might make sense to have a simple logo as placeholder for unloadable imageUrls */}

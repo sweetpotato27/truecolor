@@ -23,6 +23,7 @@ class Post extends React.Component {
     }
 
     render() {
+        console.log(this.state.posts)
         if (this.state.posts.length === 0) {
             return (<div>There are no Posts</div>)
         } else {
@@ -35,6 +36,7 @@ class Post extends React.Component {
                                 <PostBox key={post._id}
                                         className="post-box"
                                         user={post.user}
+                                        userId={post.userId}
                                         title={post.title}
                                         body={post.body}
                                         imageUrl={post.imageUrl}
