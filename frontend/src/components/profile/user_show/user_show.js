@@ -1,9 +1,8 @@
-// src/compoents/profile/profile.js
-
 import React from 'react';
-import PostBox from '../posts/post_box';
+import { withRouter } from 'react-router-dom';
+import PostBox from '../../posts/post_box';
 
-class Profile extends React.Component {
+class UserShow extends React.Component {
     constructor(props) {
         super(props);
 
@@ -13,7 +12,7 @@ class Profile extends React.Component {
     }
 
     UNSAFE_componentWillMount() {
-        this.props.fetchUserPosts(this.props.currentUser.id);
+        this.props.fetchUserPosts(this.props.userId);
     }
 
     UNSAFE_componentWillReceiveProps(newState) {
@@ -26,14 +25,14 @@ class Profile extends React.Component {
         } else {
             return (
                 <div>
-                    <h2>All of this User's Posts</h2>
+                    <h2>All of {this.props.users[0].user}'s Posts</h2>
                     {this.state.posts.map(post => (
                         <PostBox key={post._id} title={post.title} description={post.description} imageUrl={post.imageUrl}/>
                     ))}
                 </div>
             );
         }
-    }
+    }   
 }
 
-export default Profile;
+export default withRouter(UserShow);

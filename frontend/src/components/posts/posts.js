@@ -16,7 +16,6 @@ class Post extends React.Component {
 
     UNSAFE_componentWillMount() {
         this.props.fetchPosts();
-        console.log(this.props.history)
     }
 
     UNSAFE_componentWillReceiveProps(newState) {
@@ -24,11 +23,9 @@ class Post extends React.Component {
     }
 
     render() {
-        console.log(this.state.posts)
         if (this.state.posts.length === 0) {
             return (<div>There are no Posts</div>)
         } else {
-            console.log(this.state.posts[0]._id)
             return (
                 <div>
                     <NavBarContainer />
@@ -37,7 +34,7 @@ class Post extends React.Component {
                             {this.state.posts.map(post => (
                                 <PostBox key={post._id}
                                         className="post-box"
-                                        fizz={post._id}
+                                        postId={post._id}
                                         user={post.user}
                                         userId={post.userId}
                                         title={post.title}
