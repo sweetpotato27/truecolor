@@ -1,6 +1,7 @@
 // src/components/posts/post_box.js
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class PostBox extends React.Component {
     constructor(props) {
@@ -36,6 +37,7 @@ class PostBox extends React.Component {
 
     render() {
         let multipleOrNot;
+        console.log(this.props.user)
         !!(this.props.imageUrl.split(", ").length > 1) ?
             multipleOrNot = (
                 <div className="gallery">

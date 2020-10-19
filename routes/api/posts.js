@@ -17,11 +17,13 @@ router.get('/', (req, res) => {
 });
 
 router.get('/user/:user_id', (req, res) => {
-    Post.find({user: req.params.user_id})
-        .then(posts => res.json(posts))
-        .catch(err =>
-            res.status(404).json({ nopostsfound: 'No posts found from that user' })
-        );
+    Post.find({'userId': req.params.user_id}, (err, posts) => {
+        if (err) {
+            console.log(err);
+        } else {
+            return res.json(posts);
+        }
+    }).sort({ date: -1 });
 });
 
 router.get('/:id', (req, res) => {
