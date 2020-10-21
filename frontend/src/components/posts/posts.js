@@ -1,6 +1,7 @@
 // src/components/posts/posts.js
 
 import React from 'react';
+import ReactPaginate from 'react-paginate';
 import { withRouter } from 'react-router-dom';
 import PostBox from './post_box';
 import NavBarContainer from '../nav/navbar_container';
@@ -10,8 +11,14 @@ class Post extends React.Component {
         super(props);
 
         this.state = {
-            posts: []
+            posts: [],
+            page: 1,
+            frequencyPerPage: 25,
+            postsPerPage: [],
+            totalPages: 0
         }
+
+        this.changePage = this.changePage.bind(this);
     }
 
     UNSAFE_componentWillMount() {
@@ -19,7 +26,24 @@ class Post extends React.Component {
     }
 
     UNSAFE_componentWillReceiveProps(newState) {
-        this.setState({ posts: newState.posts });
+        this.setState({ 
+            posts: newState.posts,
+            totalPages: Math.ceil(newState.posts.length / this.state.frequencyPerPage)
+        });
+    }
+
+
+    changePage = data => {
+        let page = data.selected + 1;
+        let tempArr = [];
+        if (page < 1) this.setState({page: 1});
+        if (page > this.state.totalPages) this.setState({page: this.state.totalPages});
+
+        for (let i = (page - 1) * this.state.frequencyPerPage; i < (page * this.state.frequencyPerPage); i++) {
+            if (!!this.state.posts[i]) tempArr.push(this.state.posts[i]);
+        }
+        this.setState({postsPerPage: tempArr});
+        tempArr = [];
     }
 
     render() {
@@ -31,7 +55,7 @@ class Post extends React.Component {
                     <NavBarContainer />
                     <div className="all-posts">
                         <div className="all-posts-div">
-                            {this.state.posts.map(post => (
+                            {this.state.postsPerPage.map(post => (
                                 <PostBox key={post._id}
                                         className="post-box"
                                         postId={post._id}
@@ -44,6 +68,22 @@ class Post extends React.Component {
                                         history={this.props.history} />
                             ))}
                         </div>
+                    </div>
+                    <div className="pagination-div">
+                        <ReactPaginate 
+                            previousLabel={'previous'}
+                            initialPage={0}
+                            nextLabel={'next'}
+                            breakLabel={'...'}
+                            breakClassName={'break-me'}
+                            pageCount={this.state.totalPages}
+                            marginPagesDisplayed={1}
+                            pageRangeDisplayed={3}
+                            onPageChange={this.changePage}
+                            containerClassName={'pagination'}
+                            subContainerClassName={'pages pagination'}
+                            activeClassName={'active'}
+                        />
                     </div>
                 </div>
             );

@@ -19,7 +19,6 @@ router.get('/', (req, res) => {
 router.get('/user/:user_id', (req, res) => {
     Post.find({'userId': req.params.user_id}, (err, posts) => {
         if (err) {
-            console.log(err);
         } else {
             return res.json(posts);
         }
