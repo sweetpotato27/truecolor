@@ -26,7 +26,7 @@ class Post extends React.Component {
     }
 
     UNSAFE_componentWillReceiveProps(newState) {
-        this.setState({ 
+        this.setState({
             posts: newState.posts,
             totalPages: Math.ceil(newState.posts.length / this.state.frequencyPerPage)
         });
@@ -70,10 +70,10 @@ class Post extends React.Component {
                         </div>
                     </div>
                     <div className="pagination-div">
-                        <ReactPaginate 
-                            previousLabel={'previous'}
+                        <ReactPaginate
+                            previousLabel={'Previous'}
                             initialPage={0}
-                            nextLabel={'next'}
+                            nextLabel={'Next'}
                             breakLabel={'...'}
                             breakClassName={'break-me'}
                             pageCount={this.state.totalPages}
