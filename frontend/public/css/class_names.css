@@ -1,6 +1,6 @@
 /* This file is linked to index.css */
 .app {
-    width: 75vw;
+    width: 65vw;
 }
 
 .main {
@@ -53,7 +53,7 @@
 }
 
 .image {
-    width: 60vw;
+    width: 65vw;
     height: auto;
     padding: 20px 0;
 }
@@ -79,6 +79,13 @@
 }
 
 
+.name {
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    padding-bottom: 20px;
+}
+
 .name-link {
     color: #2b2b2b;
 }
@@ -89,8 +96,11 @@
     flex-direction: row;
 }
 
-
-
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-content:
+}
 
 .profile-image {
     background-color: #2b2b2b;
@@ -143,4 +153,3 @@
     align-content: center;
     width: 100%;
 }
-
