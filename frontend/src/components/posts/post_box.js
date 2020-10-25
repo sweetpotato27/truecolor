@@ -1,6 +1,7 @@
 // src/components/posts/post_box.js
 
 import React from 'react';
+import PostGallery from './post_gallery';
 // import { Link } from 'react-router-dom';
 
 class PostBox extends React.Component {
@@ -8,31 +9,55 @@ class PostBox extends React.Component {
         super(props);
         this.state = {
             imageArr: this.props.imageUrl.split(", "),
-            imageIndex: 0
+            imageIndex: 0,
+            imgBgnIdx: -1
         }
         this.clickButton = this.clickButton.bind(this);
         this.handlePostClick = this.handlePostClick.bind(this);
+        this.toggleVisiblility = this.toggleVisiblility.bind(this);
     }
 
-    clickButton(direction) {
-        return e => direction === "right" ? (
-            this.state.imageIndex + 1 > this.state.imageArr.length - 1 ? (
-                this.setState({imageIndex: 0})
-            ) : (
-                this.setState({imageIndex: this.state.imageIndex + 1})
-            )
-        ) : (
-            this.state.imageIndex - 1 < 0 ? (
+    toggleVisiblility(id) {
+        console.log("here");
+        let images = [].slice.call(document.getElementsByClassName(`gallery-img__${this.props.imageUrl}`));
+        let ele = document.getElementById(`${this.props.imageUrl}__${id}`);
+        images.forEach((img, index) => {
+            if (index !== id) {
+                // images[index].style.display = "none";
+                images[index].style.visibility = "hidden";
+                images[index].style.opacity = "0";
+                images[index].style.transition = "visibilty 0s, opacity 5s linear"
+                
+            }
+        })
+        // ele.style.display = "block";
+        ele.style.visibility = "visible";
+        ele.style.opacity = "1";
+    }
+
+    clickButton(e) {
+        if (e.target.id === "gallery-button-right") {
+            if (this.state.imageIndex + 1 > this.state.imageArr.length - 1) {
+                this.setState({imageIndex: 0});
+                this.toggleVisiblility(this.state.imageIndex);
+            } else {
+                this.setState({imageIndex: this.state.imageIndex + 1});
+                this.toggleVisiblility(this.state.imageIndex);
+            }
+        } else {
+            if (this.state.imageIndex - 1 < 0) {
                 this.setState({ imageIndex: this.state.imageArr.length - 1 })
-            ) : (
+                this.toggleVisiblility(this.state.imageIndex);
+            } else {
                 this.setState({ imageIndex: this.state.imageIndex - 1 })
-            )
-        )
+                this.toggleVisiblility(this.state.imageIndex);
+            }
+        }
     }
 
     handlePostClick() {
         this.props.history.push(`/posts/${this.props.postId}`);
-    }
+    }           
 
     render() {
         let multipleOrNot;
@@ -40,18 +65,26 @@ class PostBox extends React.Component {
             multipleOrNot = (
                 <div className="gallery">
                     <div
-                        className="gallery-img-div"
+                        id="imageGalleryContainer"
+                        className="img-gallery-div"
                         onClick={this.handlePostClick}>
-                        <img className="image" src={this.state.imageArr[this.state.imageIndex]} alt=""></img>
+                        {this.props.imageUrl.split(", ").map( (img, index) => (
+                            <PostGallery 
+                                key={img}
+                                image={img}
+                                index={index}
+                                imageUrl={this.props.imageUrl} 
+                            />
+                        ))}
                     </div>
                     <div>
                         <input type="button"
                                 id="gallery-button-left"
-                                onClick={this.clickButton("left")}
+                                onClick={this.clickButton}
                                 value="<"/>
                         <input type="button"
                                 id="gallery-button-right"
-                                onClick={this.clickButton("right")}
+                                onClick={this.clickButton}
                                 value=">"/>
                     </div>
                 </div>

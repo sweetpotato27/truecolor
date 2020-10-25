@@ -52,9 +52,23 @@
     color: #0000EE;
 }
 
+.gallery {
+}
+
+.img-gallery-div{
+}
+
+.gallery-img {
+    position: absolute;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.gallery-image {
+}
+
 .image {
     width: 65vw;
-    height: auto;
+    height: 100%;
     padding: 20px 0;
 }
 
@@ -153,3 +167,5 @@
     align-content: center;
     width: 100%;
 }
+
+
