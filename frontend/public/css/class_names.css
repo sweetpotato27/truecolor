@@ -55,16 +55,18 @@
 .gallery {
 }
 
-.img-gallery-div{
+.img-gallery-div {
 }
 
 .gallery-img {
-    position: absolute;
-    transition: visibility 0s, opacity 0.5s linear;
+    display: none;
+    /* transition: visibility 0s, opacity 0.5s, width 1s linear; */
 }
 
-.gallery-image {
-}
+/* .gallery-image {
+    transition: width 3s;
+    width: 0%;
+} */
 
 .image {
     width: 65vw;

@@ -23,16 +23,19 @@ class PostBox extends React.Component {
         let ele = document.getElementById(`${this.props.imageUrl}__${id}`);
         images.forEach((img, index) => {
             if (index !== id) {
-                // images[index].style.display = "none";
-                images[index].style.visibility = "hidden";
-                images[index].style.opacity = "0";
-                images[index].style.transition = "visibilty 0s, opacity 5s linear"
+                images[index].style.display = "none";
+                // images[index].style.visibility = "hidden";
+                // images[index].style.opacity = "0";
+                // images[index].style.width = "0%";
+                // images[index].style.transition = "visibilty 0s, width 3s"
                 
             }
         })
-        // ele.style.display = "block";
-        ele.style.visibility = "visible";
-        ele.style.opacity = "1";
+        ele.style.display = "block";
+        // ele.style.visibility = "visible";
+        // ele.style.opacity = "1";
+        // ele.style.width = "100%";
+        // ele.firstChild.style.width = "100%";
     }
 
     clickButton(e) {
@@ -56,6 +59,7 @@ class PostBox extends React.Component {
     }
 
     handlePostClick() {
+        console.log(this.props.postId)
         this.props.history.push(`/posts/${this.props.postId}`);
     }           
 
@@ -73,6 +77,7 @@ class PostBox extends React.Component {
                                 key={img}
                                 image={img}
                                 index={index}
+                                postId={this.props.postId}
                                 imageUrl={this.props.imageUrl} 
                             />
                         ))}
