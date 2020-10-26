@@ -7,6 +7,8 @@
 
 * {
  box-sizing: border-box;
+ border: solid red;
+ border-width: 0 1px;
 }
 *:before,
 *:after {
