@@ -13,8 +13,7 @@ class PostCompose extends React.Component {
       body: "",
       imageUrl: "",
       newPost: "",
-      errors: {},
-      shouldCancel: false
+      errors: ""
     };
 
     this.shouldCancel = false;
@@ -37,33 +36,36 @@ class PostCompose extends React.Component {
     let that = this;
     let files;
     e.preventDefault();
-
     files = this.fileInput.current.files;
     for (let i = 0; i < files.length; i++) {
       promises.push(that.storeFilesInFirebase(that, files[i]));
     }
     Promise.all(promises)
-      .then(() => {
+      .then((value) => {
         let url = this.urlArray.join(", ");
         let post = {
           title: that.state.title,
           body: that.state.body,
           imageUrl: url,
         };
-        this.composePost(post);
+        if (post.body === "") {
+          let success = document.getElementById("successful-post-compose");
+          success.style.display = "none";
+          this.setState({errors: "requires body"});
+        } else {
+          this.setState({ errors: "" }, this.composePost(post))
+          
+        }
       })
       .catch((errors) => {
-
       });
   }
 
   composePost(post) {
     let that = this;
-
     this.props
       .composePost(post)
       .then(() => setTimeout(() => {
-
         if (!that.shouldCancel) {
           that.props.history.push("/posts");
         } else {
@@ -71,12 +73,12 @@ class PostCompose extends React.Component {
               title: "",
               body: "",
               imageUrl: "",
-              newPost: ""
+              newPost: "",
+              errors: ""
             });
             that.shouldCancel = false;
         }
       }, 2500));
-      this.setState({ title: "", body: "", imageUrl: "" });
   }
 
   storeFilesInFirebase(that, file) {
@@ -113,7 +115,13 @@ class PostCompose extends React.Component {
               // of a new post here as well.
               // That way they are only saved to db if an image is successfully uploaded to firebase.
               that.urlArray.push(url);
-              setTimeout(() => (success.style.display = "block"), 1);
+              setTimeout(() => {
+                if (!that.shouldCancel) {
+                  if (that.state.body !== "") {
+                    success.style.display = "block";
+                  }
+                }
+              }, 1);
               uploader.style.display = "none";
               resolve(true);
             })
@@ -148,11 +156,16 @@ class PostCompose extends React.Component {
 
   // Render the post errors if there are any
   renderErrors() {
-    if (!!this.props.errors) {
+    if ( this.props.errors.length > 0 ) {
       this.shouldCancel = true;
       return (
-      <div>{this.props.errors}</div>
+        <div id="post-compose-errors">{this.props.errors}</div>
       );
+    } else if ( this.state.errors !== "" ) {
+      return (
+        <div>{this.state.errors}</div>
+      )
+    } else {
     }
   }
 
@@ -195,7 +208,7 @@ class PostCompose extends React.Component {
               />
             </div>
             <div>
-              <input type="file" ref={this.fileInput} multiple />
+              <input type="file" id="file-input" ref={this.fileInput} multiple />
             </div>
             <div>
               <input type="submit" value="Submit" />
