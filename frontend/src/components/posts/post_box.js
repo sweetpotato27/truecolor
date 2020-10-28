@@ -19,11 +19,14 @@ class PostBox extends React.Component {
 
     componentDidMount() {
         if (this.state.imageArr.length > 1) {
-            document.getElementById(`gallery-button-left-${this.props.postId}`).click()
+            // document.getElementById(`gallery-button-right-${this.props.postId}`).click()
+            // this.setState({ imageIndex: 0 });
+            this.toggleVisiblility(0);
         }
     }
 
     toggleVisiblility(id) {
+        console.log("id = " + id)
         let images = [].slice.call(document.getElementsByClassName(`gallery-img__${this.props.imageUrl}`));
         let ele = document.getElementById(`${this.props.imageUrl}__${id}`);
         images.forEach((img, index) => {
@@ -44,21 +47,18 @@ class PostBox extends React.Component {
     }
 
     clickButton(e) {
-        if (e.target.id === `gallery-button-left-${this.props.postId}`) {
-            if (this.state.imageIndex + 1 > this.state.imageArr.length - 1) {
-                this.setState({imageIndex: 0});
-                this.toggleVisiblility(this.state.imageIndex);
+        if (e.target.id === `gallery-button-right-${this.props.postId}`) {
+            if (this.state.imageIndex + 1> this.state.imageArr.length - 1) {
+                this.setState({ imageIndex: 0 }, () => this.toggleVisiblility(this.state.imageIndex));
             } else {
-                this.setState({imageIndex: this.state.imageIndex + 1});
-                this.toggleVisiblility(this.state.imageIndex);
+                this.setState({ imageIndex: this.state.imageIndex + 1 }, () => this.toggleVisiblility(this.state.imageIndex));
             }
-        } else {
+        } else if (e.target.id === `gallery-button-left-${this.props.postId}`) {
             if (this.state.imageIndex - 1 < 0) {
-                this.setState({ imageIndex: this.state.imageArr.length - 1 })
-                this.toggleVisiblility(this.state.imageIndex);
+                console.log(this.state.imageArr.length)
+                this.setState({ imageIndex: this.state.imageArr.length - 1 }, () => this.toggleVisiblility(this.state.imageIndex));
             } else {
-                this.setState({ imageIndex: this.state.imageIndex - 1 })
-                this.toggleVisiblility(this.state.imageIndex);
+                this.setState({ imageIndex: this.state.imageIndex - 1 }, () => this.toggleVisiblility(this.state.imageIndex));
             }
         }
     }
