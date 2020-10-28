@@ -6,7 +6,6 @@ class PostShow extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props)
         this.state = {
         imageArr: [],
         postId: props.postId,
@@ -33,7 +32,6 @@ class PostShow extends React.Component {
 
   
     toggleVisiblility(id) {
-        console.log("here");
         let images = [].slice.call(document.getElementsByClassName(`gallery-img__${this.props.imageUrl}`));
         let ele = document.getElementById(`${this.state.post.imageUrl}__${id}`);
         images.forEach((img, index) => {
@@ -54,7 +52,6 @@ class PostShow extends React.Component {
     }
 
     clickButton(e) {
-        console.log(e.target);
         if (e.target.id === "gallery-button-right") {
             if (this.state.imageIndex + 1 > this.state.imageArr.length - 1) {
                 this.setState({imageIndex: 0});
