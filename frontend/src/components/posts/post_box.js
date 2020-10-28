@@ -17,8 +17,13 @@ class PostBox extends React.Component {
         this.toggleVisiblility = this.toggleVisiblility.bind(this);
     }
 
+    componentDidMount() {
+        if (this.state.imageArr.length > 1) {
+            document.getElementById(`gallery-button-left-${this.props.postId}`).click()
+        }
+    }
+
     toggleVisiblility(id) {
-        console.log("here");
         let images = [].slice.call(document.getElementsByClassName(`gallery-img__${this.props.imageUrl}`));
         let ele = document.getElementById(`${this.props.imageUrl}__${id}`);
         images.forEach((img, index) => {
@@ -39,7 +44,8 @@ class PostBox extends React.Component {
     }
 
     clickButton(e) {
-        if (e.target.id === "gallery-button-right") {
+        if (e.target.id === `gallery-button-left-${this.props.postId}`) {
+            console.log("Index = " + this.state.imageIndex)
             if (this.state.imageIndex + 1 > this.state.imageArr.length - 1) {
                 this.setState({imageIndex: 0});
                 this.toggleVisiblility(this.state.imageIndex);
@@ -48,6 +54,7 @@ class PostBox extends React.Component {
                 this.toggleVisiblility(this.state.imageIndex);
             }
         } else {
+            console.log("Index = " + this.state.imageIndex)
             if (this.state.imageIndex - 1 < 0) {
                 this.setState({ imageIndex: this.state.imageArr.length - 1 })
                 this.toggleVisiblility(this.state.imageIndex);
@@ -84,11 +91,11 @@ class PostBox extends React.Component {
                     </div>
                     <div>
                         <input type="button"
-                                id="gallery-button-left"
+                                id={`gallery-button-left-${this.props.postId}`}
                                 onClick={this.clickButton}
                                 value="<"/>
                         <input type="button"
-                                id="gallery-button-right"
+                                id={`gallery-button-right-${this.props.postId}`}
                                 onClick={this.clickButton}
                                 value=">"/>
                     </div>
