@@ -18,8 +18,8 @@ class PostBox extends React.Component {
     }
 
     componentDidMount() {
-        if (this.state.imageArr.length > 1) {
-            document.getElementById(`gallery-button-left-${this.props.postId}`).click()
+        if (this.state.imageArr.length > 1) {;
+            this.toggleVisiblility(0);
         }
     }
 
@@ -44,21 +44,17 @@ class PostBox extends React.Component {
     }
 
     clickButton(e) {
-        if (e.target.id === `gallery-button-left-${this.props.postId}`) {
-            if (this.state.imageIndex + 1 > this.state.imageArr.length - 1) {
-                this.setState({imageIndex: 0});
-                this.toggleVisiblility(this.state.imageIndex);
+        if (e.target.id === `gallery-button-right-${this.props.postId}`) {
+            if (this.state.imageIndex + 1> this.state.imageArr.length - 1) {
+                this.setState({ imageIndex: 0 }, () => this.toggleVisiblility(this.state.imageIndex));
             } else {
-                this.setState({imageIndex: this.state.imageIndex + 1});
-                this.toggleVisiblility(this.state.imageIndex);
+                this.setState({ imageIndex: this.state.imageIndex + 1 }, () => this.toggleVisiblility(this.state.imageIndex));
             }
-        } else {
+        } else if (e.target.id === `gallery-button-left-${this.props.postId}`) {
             if (this.state.imageIndex - 1 < 0) {
-                this.setState({ imageIndex: this.state.imageArr.length - 1 })
-                this.toggleVisiblility(this.state.imageIndex);
+                this.setState({ imageIndex: this.state.imageArr.length - 1 }, () => this.toggleVisiblility(this.state.imageIndex));
             } else {
-                this.setState({ imageIndex: this.state.imageIndex - 1 })
-                this.toggleVisiblility(this.state.imageIndex);
+                this.setState({ imageIndex: this.state.imageIndex - 1 }, () => this.toggleVisiblility(this.state.imageIndex));
             }
         }
     }
