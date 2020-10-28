@@ -18,15 +18,12 @@ class PostBox extends React.Component {
     }
 
     componentDidMount() {
-        if (this.state.imageArr.length > 1) {
-            // document.getElementById(`gallery-button-right-${this.props.postId}`).click()
-            // this.setState({ imageIndex: 0 });
+        if (this.state.imageArr.length > 1) {;
             this.toggleVisiblility(0);
         }
     }
 
     toggleVisiblility(id) {
-        console.log("id = " + id)
         let images = [].slice.call(document.getElementsByClassName(`gallery-img__${this.props.imageUrl}`));
         let ele = document.getElementById(`${this.props.imageUrl}__${id}`);
         images.forEach((img, index) => {
@@ -55,7 +52,6 @@ class PostBox extends React.Component {
             }
         } else if (e.target.id === `gallery-button-left-${this.props.postId}`) {
             if (this.state.imageIndex - 1 < 0) {
-                console.log(this.state.imageArr.length)
                 this.setState({ imageIndex: this.state.imageArr.length - 1 }, () => this.toggleVisiblility(this.state.imageIndex));
             } else {
                 this.setState({ imageIndex: this.state.imageIndex - 1 }, () => this.toggleVisiblility(this.state.imageIndex));
