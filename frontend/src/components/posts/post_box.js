@@ -33,7 +33,7 @@ class PostBox extends React.Component {
                 // images[index].style.opacity = "0";
                 // images[index].style.width = "0%";
                 // images[index].style.transition = "visibilty 0s, width 3s"
-                
+
             }
         })
         ele.style.display = "block";
@@ -61,7 +61,7 @@ class PostBox extends React.Component {
 
     handlePostClick() {
         this.props.history.push(`/posts/${this.props.postId}`);
-    }           
+    }
 
     render() {
         let multipleOrNot;
@@ -73,12 +73,12 @@ class PostBox extends React.Component {
                         className="img-gallery-div"
                         onClick={this.handlePostClick}>
                         {this.props.imageUrl.split(", ").map( (img, index) => (
-                            <PostGallery 
+                            <PostGallery
                                 key={img}
                                 image={img}
                                 index={index}
                                 postId={this.props.postId}
-                                imageUrl={this.props.imageUrl} 
+                                imageUrl={this.props.imageUrl}
                             />
                         ))}
                     </div>
@@ -113,11 +113,11 @@ class PostBox extends React.Component {
                 <div className="post-header">
                     <div className="name">
                         <a href={`#/users/${this.props.userId}`}>
-                            <div className="profile-image" item-prop="image"></div>
+                          <div className="profile-image" item-prop="image"></div>
+                          <div className="post-name">
+                              <h3>{this.props.user ? this.props.user : ""}</h3>
+                          </div>
                         </a>
-                        <div className="post-name">
-                            <h3>{this.props.user ? this.props.user : ""}</h3>
-                        </div>
                     </div>
                         <div className="date">
                             <h3>{this.props.date ? this.props.date.split("T")[0] : ""}</h3>

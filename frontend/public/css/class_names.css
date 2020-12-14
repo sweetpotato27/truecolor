@@ -1,6 +1,6 @@
 /* This file is linked to index.css */
 .app {
-    width: 65vw;
+    width: 75vw;
 }
 
 .main {
@@ -27,13 +27,17 @@
     justify-content: space-between;
     flex-direction: row;
     background: rgba(255, 255, 255);
-    border-bottom: solid 1px #2b2b2b;
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
     position: sticky;
     top: 0;
-    z-index: 90;
+    z-index: 99;
 }
 
 .navbar > h1 {
+    font-family: orpheuspro, serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4rem;
     text-transform: uppercase;
     margin: 25px 25px 25px -10px;
 }
@@ -68,9 +72,13 @@
     width: 0%;
 } */
 
+.gallery-img-div {
+  margin: auto;
+}
+
 .image {
-    width: 65vw;
-    height: 100%;
+    max-width: 100%;
+    height: auto;
     padding: 20px 0;
 }
 
@@ -94,45 +102,34 @@
   background: transparent;
 }
 
-
-.name {
-    display: flex;
-    justify-content: left;
-    flex-direction: row;
-    padding-bottom: 20px;
-}
-
 .name-link {
     color: #2b2b2b;
 }
 
-.date {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: row;
+.date h3 {
+  color: lightgrey;
 }
 
 .post-header {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-content:
+    align-items: center;
+}
+
+.post-name {
+    display: inline-block;
 }
 
 .profile-image {
     background-color: #2b2b2b;
     background-image: url(https://i.pinimg.com/originals/92/15/f6/9215f65dd4297f0e7aa159fabd0924cc.jpg);
     background-size: cover;
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
     overflow: hidden;
+    margin-right: 16px;
     display: inline-block;
-    vertical-align: middle;
-    margin-right: 12px;
-    float: left;
-}
-
-.post-name {
-    float: left;
 }
 
 .info-wrapper {
@@ -169,5 +166,3 @@
     align-content: center;
     width: 100%;
 }
-
-

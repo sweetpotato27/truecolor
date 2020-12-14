@@ -17,7 +17,9 @@
 
 body {
     font-family: acumin-pro, sans-serif;
-    font-size: .9rem;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1rem;
     line-height: 140%;
     color: rgb(56, 56, 56);
     background-color: #fff;
@@ -51,7 +53,7 @@ a {
     margin: auto;
     padding: 40px 0 20px 0;
     position: relative;
-    border-bottom: solid 1px lightgrey;
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
 }
 
 .post-box-div h2 {
