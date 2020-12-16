@@ -14,74 +14,57 @@ class NavbarDropdown extends React.Component {
 
 
   render() {
-    let linkList;
-    let href;
-    href = window.location.href.split("/");
-    href = href.splice(0, 3)
-    href = href.join("/");
-    if (window.location.href === href + "/#/posts") {
-        if(this.props.loggedIn) {
-          linkList = 
-          <ul className="navbar-dropdown-list"
-              onClick={this.props.closeModal}>
+    let paths = window.location.pathname.split("/").filter(e=>e); //filter empty
+    let pubLinks = [
+      <li className="navbar-dropdown-item">
+        <Link className="hyperlink" to={'/info'}>Information</Link>
+      </li>,
+      <li className="navbar-dropdown-item">
+        <Link className="hyperlink" to={'/contributors'}>Contributors</Link>
+      </li>
+    ];
+
+    if (paths[0] === "info") {
+        pubLinks.splice(0, 1);
+    } else if (paths[0] === "contributors") {
+        pubLinks.splice(1, 1);
+    }
+
+    let linkList = [];
+    if (this.props.loggedIn) {
+        if(paths[0] === 'posts') {
+          linkList.push(
             <li className="navbar-dropdown-item">
               <Link className="hyperlink" to={'/new_post'}>Compose</Link>
             </li>
+            );
+          linkList.push(
             <li className="navbar-dropdown-item">
               <Link className="hyperlink" to={'/profile'}>My Feed</Link>
             </li>
-            <li className="navbar-dropdown-item">
-              <Link className="hyperlink" to={'/info'}>Information</Link>
-            </li>
-            <li className="navbar-dropdown-item">
-              <Link className="hyperlink" to={'/contributors'}>Contributors</Link>
-            </li>
-            <li className="navbar-dropdown-item">
-              <button className="hyperlink" onClick={this.handleLogout}>Logout</button>
-            </li>
-          </ul>
-        } else {
-          linkList = 
-          <ul className="navbar-dropdown-list"
-              onClick={this.props.closeModal}>
-            <li className="navbar-dropdown-item">
-              <Link className="hyperlink" to={'/info'}>Information</Link>
-            </li>
-            <li className="navbar-dropdown-item">
-              <Link className="hyperlink" to={'/contributors'}>Contributors</Link>
-            </li>
-          </ul>
+            );
         }
-    } else if (window.location.href === href + "/#/info") {
-      linkList = 
-        <ul className="navbar-dropdown-list"
-            onClick={this.props.closeModal}>
+        pubLinks.forEach(link=>{
+          linkList.push(link)
+        })
+        linkList.push(
           <li className="navbar-dropdown-item">
-            <Link className="hyperlink" to={'/posts'}>posts</Link>
+            <button className="hyperlink" onClick={this.handleLogout}>Logout</button>
           </li>
-          <li className="navbar-dropdown-item">
-            <Link className="hyperlink" to={'/contributors'}>Contributors</Link>
-          </li>
-        </ul>
-    } else if (window.location.href === href + "/#/contributors") {
-      linkList = 
-        <ul className="navbar-dropdown-list"
-            onClick={this.props.closeModal}>
-          <li className="navbar-dropdown-item">
-            <Link className="hyperlink" to={'/posts'}>posts</Link>
-          </li>
-          <li className="navbar-dropdown-item">
-            <Link className="hyperlink" to={'/info'}>Information</Link>
-          </li>
-        </ul>
-    } else {
-        linkList = <div>poop</div>
+          );
+    } else{
+        linkList = pubLinks
     }
 
+    let ul = 
+    <ul className="navbar-dropdown-list"
+    onClick={this.props.closeModal}>
+      {linkList}
+    </ul>
     
     return (
       <div className="navbar-dropdown-container">
-        {linkList}
+        {ul}
       </div>
     );
   }

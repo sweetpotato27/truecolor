@@ -32,21 +32,18 @@ class NavBar extends React.Component {
 
     // Selectively render links dependent on whether the user is logged in
     getLinks() {
-        let navIcon;
-        let href;
-        href = window.location.href.split("/");
-        href = href.splice(0, 3)
-        href = href.join("/");
-        if (window.location.href === href + "/#/") {
-            navIcon = <Link className="hyperlink" to={`/posts`}>posts</Link>
-        } else {
-            navIcon = <button className="header__navbar-profile"
-                            onClick={() => this.handleOpenModal("profile")}>
-                        </button>
-        }        
+        let links = [];
+        links.push(<Link className="hyperlink" to={`/posts`} key="posts">posts</Link>)
+        if (this.props.loggedIn) {
+          links.push(
+            <button className="header__navbar-profile"
+              onClick={() => this.handleOpenModal("profile")}>
+            </button>
+          )
+        }
         return (
             <div className="hyperlink-div">
-                {navIcon}
+                {links}
                 {/* <Link className="hyperlink" to={'/feed'}>Feed</Link>
                 <Link className="hyperlink" to={'/info'}>Info</Link>
                 <Link className="hyperlink" to={'/contributors'}>Contributors</Link> */}
