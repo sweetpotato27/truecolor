@@ -16,10 +16,10 @@ class NavbarDropdown extends React.Component {
   render() {
     let paths = window.location.pathname.split("/").filter(e=>e); //filter empty
     let pubLinks = [
-      <li className="navbar-dropdown-item">
+      <li className="navbar-dropdown-item" key="dropdownInfo">
         <Link className="hyperlink" to={'/info'}>Information</Link>
       </li>,
-      <li className="navbar-dropdown-item">
+      <li className="navbar-dropdown-item" key="dropDownContributors">
         <Link className="hyperlink" to={'/contributors'}>Contributors</Link>
       </li>
     ];
@@ -34,13 +34,13 @@ class NavbarDropdown extends React.Component {
     if (this.props.loggedIn) {
         if(paths[0] === 'posts') {
           linkList.push(
-            <li className="navbar-dropdown-item">
-              <Link className="hyperlink" to={'/new_post'}>Compose</Link>
+            <li className="navbar-dropdown-item" key="dropdownNewPost">
+              <Link className="hyperlink" key="newPost" to={'/new_post'}>Compose</Link>
             </li>
             );
           linkList.push(
-            <li className="navbar-dropdown-item">
-              <Link className="hyperlink" to={'/profile'}>My Feed</Link>
+            <li className="navbar-dropdown-item" key="dropdownProfile">
+              <Link className="hyperlink" key="profile" to={'/profile'}>My Feed</Link>
             </li>
             );
         }
@@ -48,7 +48,7 @@ class NavbarDropdown extends React.Component {
           linkList.push(link)
         })
         linkList.push(
-          <li className="navbar-dropdown-item">
+          <li className="navbar-dropdown-item" key="dropdownLogout">
             <button className="hyperlink" onClick={this.handleLogout}>Logout</button>
           </li>
           );

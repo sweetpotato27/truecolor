@@ -1,11 +1,12 @@
 import React from 'react';
-
+import NavBarContainer from '../nav/navbar_container';
 
 class Info extends React.Component {
 
     render() {
         return(
             <div className="info-wrapper">
+                <NavBarContainer />
                 <div className="info">
                     <h2>Info</h2>
                     <p>True Color is a collaborative community blog featuring photographers and artists.</p>
