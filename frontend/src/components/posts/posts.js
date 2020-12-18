@@ -4,7 +4,6 @@ import React from 'react';
 import ReactPaginate from 'react-paginate';
 import { withRouter } from 'react-router-dom';
 import PostBox from './post_box';
-import NavBarContainer from '../nav/navbar_container';
 
 class Post extends React.Component {
     constructor(props) {
@@ -52,7 +51,6 @@ class Post extends React.Component {
         } else {
             return (
                 <div>
-                    <NavBarContainer />
                     <div className="all-posts">
                         <div className="all-posts-div">
                             {this.state.postsPerPage.map(post => (

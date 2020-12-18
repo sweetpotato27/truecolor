@@ -78,7 +78,7 @@ class NavBar extends React.Component {
             linkList.push(
               <li className="navbar-dropdown-item"
                 key="close">
-                <button className="hyperlink" onClick={this.handleLogout}>Logout</button>
+                <button className="hyperlink" onClick={this.logOut}>Logout</button>
               </li>
               );
         } else{

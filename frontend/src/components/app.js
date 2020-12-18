@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/routes_util';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import Modal from './modal/modal';
+import Header from './nav/header';
 import PostsContainer from './posts/posts_container';
 import PostShowContainer from './posts/post_show/post_show_container';
 import MainPage from './main/main_page';
@@ -19,9 +20,12 @@ import Contributors from './website-information/contributors';
 // our own project and which kinds of routes are
 // required for the unique needs of our app.
 
-const App = () => (
-    <div className="app">
-        <Modal />
+const App = () => {
+  let location = useLocation();
+  return (
+      <div className="app">
+      <Header pathname={location.pathname} type={"header__landing"}/>
+      <main>
         <Switch>
             <Route exact path="/" component={MainPage} />
             <Route exact path="/posts" component={PostsContainer} />
@@ -36,7 +40,13 @@ const App = () => (
             <ProtectedRoute exact path="/new_post" component={PostComposeContainer} />
             {/* <ProtectedRoute exact path="/posts" component={PostContainer} /> */}
         </Switch>
+      </main>
+    <footer>
+      Footer stuff here
+    </footer>
     </div>
-);
+  );
+}
+
 
 export default App;

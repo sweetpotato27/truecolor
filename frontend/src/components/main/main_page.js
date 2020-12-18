@@ -1,7 +1,6 @@
 // src/components/main/main_page.js
 
 import React from 'react';
-import Header from '../nav/header';
 
 class MainPage extends React.Component {
 
@@ -29,7 +28,6 @@ class MainPage extends React.Component {
     render() {
         return (
             <div className="main">
-                <Header type={"header__landing"}/>
             </div>
         );
     }
