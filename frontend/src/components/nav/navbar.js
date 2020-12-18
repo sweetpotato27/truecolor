@@ -37,6 +37,7 @@ class NavBar extends React.Component {
         if (this.props.loggedIn) {
           links.push(
             <button className="header__navbar-profile"
+              key="button"
               onClick={() => this.handleOpenModal("profile")}>
             </button>
           )
