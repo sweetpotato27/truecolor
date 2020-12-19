@@ -90,7 +90,7 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <div className="navbar">
+            <nav className="navbar">
                 <h1><Link className="hyperlink" to={'/'}>True Color</Link></h1>
                 <div className={`hyperlink-div ${this.state.opened?'show':''}`}>
                   {this.getLinks()}
@@ -99,7 +99,7 @@ class NavBar extends React.Component {
                 <button className="header__navbar_hamburger"
                   onClick={()=>this.toggleMenu()}>
                 </button>
-            </div>
+            </nav>
         );
     }
 }
