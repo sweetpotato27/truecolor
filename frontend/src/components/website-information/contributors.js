@@ -4,7 +4,7 @@ class Contributors extends React.Component {
 
     render() {
         return (
-            <div class="contributors">
+            <div className="contributors">
                 <h1>Contributors</h1>
                 <ul>
                   <li>First Name Last Name</li>

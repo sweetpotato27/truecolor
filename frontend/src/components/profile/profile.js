@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PostBox from '../posts/post_box';
+import NavBarContainer from '../nav/navbar_container';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -26,6 +27,7 @@ class Profile extends React.Component {
         } else {
             return (
                 <div>
+                    <NavBarContainer />
                     <h2>All of this User's Posts</h2>
                     {this.state.posts.map(post => (
                         <PostBox key={post._id} title={post.title} description={post.description} imageUrl={post.imageUrl}/>
