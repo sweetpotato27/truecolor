@@ -9,7 +9,7 @@ class PostGallery extends React.Component {
         return (
             <div className={`gallery-img gallery-img__${this.props.imageUrl}`}
                 id={`${this.props.imageUrl}__${this.props.index}`}>
-                <img className="image gallery-image" src={this.props.image}></img>
+                <img className="image gallery-image" alt="" src={this.props.image}></img>
             </div>
         )
     }

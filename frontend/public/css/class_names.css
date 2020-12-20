@@ -3,6 +3,7 @@
     width: 75vw;
 }
 
+
 .main {
     width: 100%;
     height: 100%;
@@ -88,14 +89,22 @@
     font-size: 27px;
 }
 
-.header__navbar-profile {
+
+
+.header__navbar_hamburger {
   cursor: pointer;
   background-color: inherit;
-  height: 100%;
+  height: 40px;
+  margin:1%;
   padding: 0 1rem;
+  display:none;
 }
-.header__navbar-profile:hover {
+.header__navbar_hamburger:hover {
     background-color: black;
+}
+.hide{
+  display:none;
+  visibility:hidden;
 }
 
 .modal__background--profile {
@@ -166,3 +175,31 @@
     align-content: center;
     width: 100%;
 }
+
+@media only screen and (min-width: 768px) {
+  /* tablets and desktop */
+}
+
+@media only screen and (max-width: 767px) {
+  .header__navbar_hamburger{
+    display:initial;
+  }
+  .navbar .hyperlink-div{
+    position: fixed;
+    top: 2rem;
+    right: 0;
+    display:none;
+    background-color:white;
+  }
+  .navbar .hyperlink-div.show{
+    display:flex;
+    flex-flow: column nowrap;
+  }
+  
+  /* phones */
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+  /* portrait phones */
+}
+

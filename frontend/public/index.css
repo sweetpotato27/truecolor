@@ -5,7 +5,7 @@
 @import "./css/id_names.css";
 @import "./css/modal.css";
 
-* {
+form * {
  box-sizing: border-box;
  border: solid red;
  border-width: 0 1px;
@@ -45,6 +45,10 @@ h3.user {
 a {
   color: #0000EE;
   text-decoration-line: none;
+}
+
+main{
+  max-width:80ch;
 }
 
 .post-box-div {
@@ -143,10 +147,6 @@ button:active {
 
 
 @media only screen and (max-width: 600px) {
-  .app {
-    width: 95vw;
-    overflow: scroll;
-  }
 
   body {
     font-size: 1rem;
