@@ -1,6 +1,10 @@
 import React from 'react';
 
 class PostGallery extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className={`gallery-img gallery-img__${this.props.imageUrl}`}

@@ -18,13 +18,19 @@ class NavbarDropdown extends React.Component {
 
   render() {
     let paths = window.location.pathname.split("/").filter(e=>e); //filter empty
+
+    let createLink = (to, label) => {
+      return (
+        <li className="navbar-dropdown-item"
+          key={to}>
+          <Link className="hyperlink" to={to}>{label}</Link>
+        </li>
+      )
+    }
+
     let pubLinks = [
-      <li className="navbar-dropdown-item" key="dropdownInfo">
-        <Link className="hyperlink" to={'/info'}>Information</Link>
-      </li>,
-      <li className="navbar-dropdown-item" key="dropDownContributors">
-        <Link className="hyperlink" to={'/contributors'}>Contributors</Link>
-      </li>
+      createLink('/info', 'Information'),
+      createLink('/contributors', 'Contributors'),
     ];
 
     if (paths[0] === "info") {
@@ -57,7 +63,8 @@ class NavbarDropdown extends React.Component {
           linkList.push(link)
         })
         linkList.push(
-          <li className="navbar-dropdown-item" key="dropdownLogout">
+          <li className="navbar-dropdown-item"
+            key="close">
             <button className="hyperlink" onClick={this.handleLogout}>Logout</button>
           </li>
           );

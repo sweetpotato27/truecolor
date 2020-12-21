@@ -7,7 +7,8 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            newPost: true
+            newPost: true,
+            opened:false
         }
         this.logoutUser = this.logoutUser.bind(this);
         this.getLinks = this.getLinks.bind(this);
@@ -26,38 +27,79 @@ class NavBar extends React.Component {
         })
     }
 
+    toggleMenu(){
+      this.setState({
+        opened: !this.state.opened
+      })
+    }
+
     handleOpenModal(type) {
         this.props.openModal(type);
     }
 
     // Selectively render links dependent on whether the user is logged in
     getLinks() {
-        let links = [];
-        links.push(<Link className="hyperlink" to={`/posts`} key="posts">posts</Link>)
-        if (this.props.loggedIn) {
-          links.push(
-            <button className="header__navbar-profile"
-              key="button"
-              onClick={() => this.handleOpenModal("profile")}>
-            </button>
+        let linkList = [];
+
+        let paths = window.location.pathname.split("/").filter(e=>e); //filter empty
+
+        let createLink = (to, label) => {
+          return (
+            <Link className="hyperlink" key={to} to={to}>{label}</Link>
           )
         }
-        return (
-            <div className="hyperlink-div">
-                {links}
-                {/* <Link className="hyperlink" to={'/feed'}>Feed</Link>
-                <Link className="hyperlink" to={'/info'}>Info</Link>
-                <Link className="hyperlink" to={'/contributors'}>Contributors</Link> */}
-            </div>
-        );
+    
+        let pubLinks = [
+          createLink('/posts', 'Posts'),
+          createLink('/info', 'Information'),
+          createLink('/contributors', 'Contributors'),
+        ];
+
+        if (paths[0] === "posts"){
+          pubLinks.shift();
+        }else if (paths[0] === "info") {
+            pubLinks.splice(1, 1);
+        } else if (paths[0] === "contributors") {
+            pubLinks.splice(2, 1);
+        }
+    
+        if (this.props.loggedIn) {
+            if(paths[0] === 'posts') {
+              linkList.push(
+                createLink('/new_post', 'Compose')
+                )
+              linkList.push(
+                createLink('/profile', 'My Feed')
+                );
+            }
+            pubLinks.forEach(link=>{
+              linkList.push(link)
+            })
+            linkList.push(
+              <li className="navbar-dropdown-item"
+                key="close">
+                <button className="hyperlink" onClick={this.logOut}>Logout</button>
+              </li>
+              );
+        } else{
+            linkList = pubLinks
+        }
+
+        return linkList;
     }
 
     render() {
         return (
-            <div className="navbar">
+            <nav className="navbar">
                 <h1><Link className="hyperlink" to={'/'}>True Color</Link></h1>
-                { this.getLinks() }
-            </div>
+                <div className={`hyperlink-div ${this.state.opened?'show':''}`}>
+                  {this.getLinks()}
+                </div>
+
+                <button className="header__navbar_hamburger"
+                  onClick={()=>this.toggleMenu()}>
+                </button>
+            </nav>
         );
     }
 }
