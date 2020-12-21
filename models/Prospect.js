@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const ProspectSchema = new Schema({
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     date: {
         type: Date,

@@ -2,6 +2,7 @@
 
 import { connect } from "react-redux";
 import { signup } from "../../actions/session_actions";
+import { fetchProspect } from "../../actions/prospect_actions";
 import SignupForm from "./signup_form";
 
 const mapStateToProps = (state) => {
@@ -14,6 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     signup: (user) => dispatch(signup(user)),
+    fetchProspect: (email) => dispatch(fetchProspect(email))
   };
 };
 

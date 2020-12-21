@@ -5,6 +5,9 @@ class NavbarDropdown extends React.Component {
   constructor(props) {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
+    this.administrators = ["matthewsdb34@gmail.com", 
+                            "cameronjgetty@gmail.com",
+                            "diana.asap@gmail.com"]
   }
 
   handleLogout() {
@@ -32,17 +35,23 @@ class NavbarDropdown extends React.Component {
 
     let linkList = [];
     if (this.props.loggedIn) {
-        if(paths[0] === 'posts') {
-          linkList.push(
-            <li className="navbar-dropdown-item" key="dropdownNewPost">
-              <Link className="hyperlink" key="newPost" to={'/new_post'}>Compose</Link>
-            </li>
-            );
-          linkList.push(
-            <li className="navbar-dropdown-item" key="dropdownProfile">
-              <Link className="hyperlink" key="profile" to={'/profile'}>My Feed</Link>
-            </li>
-            );
+      if (this.administrators.includes(this.props.currentUserEmail)) {
+        linkList.push(
+          <li className="navbar-dropdown-item" key="dropdownNewProspect">
+            <Link className="hyperlink" key="newProspect" to={'/new_prospect'}>Record Prospect</Link>
+          </li>
+      )}
+      linkList.push(
+        <li className="navbar-dropdown-item" key="dropdownNewPost">
+          <Link className="hyperlink" key="newPost" to={'/new_post'}>Compose</Link>
+        </li>
+        );
+      linkList.push(
+        <li className="navbar-dropdown-item" key="dropdownProfile">
+          <Link className="hyperlink" key="profile" to={'/profile'}>My Feed</Link>
+        </li>
+        );
+      if(paths[0] === 'posts') {
         }
         pubLinks.forEach(link=>{
           linkList.push(link)

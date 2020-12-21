@@ -8,6 +8,7 @@ class SignupForm extends React.Component {
     super(props);
     this.state = {
       email: "",
+      prospectEmail: "",
       handle: "",
       password: "",
       password2: "",
@@ -41,8 +42,31 @@ class SignupForm extends React.Component {
       password: this.state.password,
       password2: this.state.password2,
     };
-
-    this.props.signup(user, this.props.history);
+    this.props.fetchProspect(user.email)
+      .then( res => {
+        this.setState({
+          prospectEmail: res.prospect.data
+        });
+        if (this.state.prospectEmail.length > 0 ) {
+          this.props.signup(user, this.props.history)
+            .then( res => {
+              if (res.errors) {
+                console.error(res.errors);
+              } else {
+                // delete prospect here
+              }
+            });
+        } else {
+          this.setState ({
+            email: "",
+            handle: "",
+            password: "",
+            password2: ""
+          })
+        }
+      }).catch(error => {
+        console.error(error.message);
+      });
   }
 
   renderErrors() {
