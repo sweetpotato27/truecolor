@@ -10,6 +10,8 @@ const Post = require('../../models/Post');
 const validatePostInput = require('../../validation/posts');
 
 router.get('/', (req, res) => {
+    // console.log(res);
+    // res.setHeader('Cache-Control', 'public, max-age=864000');
     Post.find()
         .sort({ date: -1 })
         .then(posts => res.json(posts))

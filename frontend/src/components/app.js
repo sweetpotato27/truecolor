@@ -13,6 +13,7 @@ import SignupFormcontainer from './session/signup_form_container';
 import ProfileContainer from './profile/profile_container';
 import UserShowContainer from './profile/user_show/user_show_container';
 import PostComposeContainer from './posts/post_compose_container';
+import ProspectRecordContainer from './prospects/prospect_record_container';
 import Info from './website-information/info';
 import Contributors from './website-information/contributors';
 
@@ -38,6 +39,7 @@ const App = () => {
             <AuthRoute exact path="/signup" component={SignupFormcontainer} />
 
             <ProtectedRoute exact path="/new_post" component={PostComposeContainer} />
+            <ProtectedRoute exact path="/new_prospect" component={ProspectRecordContainer} />
             {/* <ProtectedRoute exact path="/posts" component={PostContainer} /> */}
         </Switch>
       </main>

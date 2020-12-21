@@ -20,8 +20,7 @@ class MainPage extends React.Component {
                 href = window.location.href.split("/");
                 href = href.splice(0, 3)
                 href = href.join("/");
-                window.location.href = href + "/#/login";
-            }
+                window.location.href = href + "/login";            }
         })
     }
 
